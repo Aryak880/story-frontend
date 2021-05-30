@@ -1,0 +1,110 @@
+.loadingContainer {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 5rem;
+}
+
+.loadingContainer .loadingBall {
+  height: 2.5rem;
+  width: 2.5rem;
+  background: repeating-linear-gradient(
+    yellow 0rem,
+    yellow,
+    0.2rem,
+    black 0.2rem,
+    black 0.4rem
+  );
+}
+
+.loadingContainer #loadingCircle {
+  border-radius: 100%;
+  -webkit-animation: circle-rotation 1s infinite;
+  animation: circle-rotation 1s infinite;
+}
+
+.loadingContainer #loadingSquare {
+  -webkit-animation: square-translate 1s ease-in-out infinite;
+  animation: square-translate 1s ease-in-out infinite;
+  -webkit-transform: rotate(105deg);
+  transform: rotate(105deg);
+}
+
+@-webkit-keyframes circle-rotation {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  50% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes circle-rotation {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  50% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+  }
+}
+
+@-webkit-keyframes square-translate {
+  0% {
+    -webkit-transform: 0;
+    transform: 0;
+  }
+  50% {
+    -webkit-transform: translate(10rem);
+    transform: translate(10rem);
+  }
+  100% {
+    -webkit-transform: rotate(-100deg);
+    transform: rotate(-100deg);
+  }
+}
+
+@keyframes square-translate {
+  0% {
+    -webkit-transform: 0;
+    transform: 0;
+  }
+  50% {
+    -webkit-transform: translate(10rem);
+    transform: translate(10rem);
+  }
+  100% {
+    -webkit-transform: rotate(-100deg);
+    transform: rotate(-100deg);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 7px;
+  }
+}
+/*# sourceMappingURL=style.css.map */

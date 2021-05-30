@@ -1,0 +1,11 @@
+.storyContainer .story {
+  font-size: 1.8rem;
+  padding: 2rem;
+  max-width: 420px;
+}
+
+.storyContainer .storyCardContainer p {
+  margin-top: 1rem;
+  word-spacing: 0.5rem;
+  font-family: 'Noto Sans', sans-serif;
+}
