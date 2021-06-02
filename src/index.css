@@ -6,12 +6,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Mate+SC&family=Montserrat:wght@200&family=Noto+Sans:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&family=Shadows+Into+Light&display=swap');
 /* 
 font-family: 'Mate SC', serif;
 font-family: 'Montserrat', sans-serif;
 font-family: 'Noto Sans', sans-serif; 
 font-family: 'EB Garamond', serif;
 font-family: 'Dancing Script', cursive;
+font-family: 'Inconsolata', monospace; //for read story
+font-family: 'Shadows Into Light', cursive; // for writer's
 */
 
 html {

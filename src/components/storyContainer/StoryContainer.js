@@ -18,13 +18,13 @@ const StoryContainer = () => {
         
     }, [])
 
-
+    let i = 1
 
     return (
         <div className='storyContainer'>
 
             {
-                stories.map(x => <StoryCard key={x._id} data={x} />)
+                stories.map(x => <StoryCard key={x._id} data={x} i={i++}/>)
             }
 
             {loading && <Loading />}

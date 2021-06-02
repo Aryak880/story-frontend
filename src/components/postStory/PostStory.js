@@ -10,25 +10,21 @@ const PostStory = () => {
 
     const [owner, setOwner] = useState({
             name: '',
-            email: '',
+            email: 'example@gmail.com',
             age: '',
             insta: '',
             facebook: '',
-            profile: ''
+            profile: 'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'
     })
 
     const [loading, setLoading] = useState(false)
 
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
             e.preventDefault()
             setLoading(true)
             
-            if(owner.profile.length === 0){
-                setOwner({
-                    ...owner,
-                    profile: 'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'
-                })
-            }
+            console.log(owner)
 
             fetch('https://protected-mesa-93618.herokuapp.com/story', {
         
