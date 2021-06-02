@@ -10,11 +10,11 @@ const PostStory = () => {
 
     const [owner, setOwner] = useState({
             name: '',
-            email: 'example@gmail.com',
+            email: '',
             age: '',
             insta: '',
             facebook: '',
-            profile: 'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'
+            profile: 'https://images.unsplash.com/photo-1518655061710-5ccf392c275a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80'
     })
 
     const [loading, setLoading] = useState(false)
@@ -100,11 +100,12 @@ const PostStory = () => {
                             />
                         </label><br />
 
-                        <label>Email: 
+                        <label>Email<span>* </span> : 
                             <input 
                                 value={owner.email} 
                                 type='email' 
-                                name='email' 
+                                name='email'
+                                required 
                                 onChange={e => setOwner({...owner, email: e.target.value})}
                                 
                             />
