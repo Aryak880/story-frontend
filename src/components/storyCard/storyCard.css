@@ -1,7 +1,7 @@
 .storyCard {
   width: 100%;
   display: flex;
-  padding: 1.5rem;
+  padding: 1rem;
   background: rgba(225, 225, 225, 0.4);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -13,9 +13,11 @@
 .storyCard .ownerDetailsContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   font-size: 1.8rem;
   font-family: 'Shadows Into Light', cursive;
+  text-align: center;
 }
 
 .storyCard .ownerDetailsContainer {
@@ -25,8 +27,7 @@
 
 .storyCard .ownerDetailsContainer .ownerProfile img {
   border-radius: 1rem;
-  box-shadow: 2px 2px 7px rgba(209, 56, 56, 0.877),
-    -2px -2px 7px rgba(38, 1, 247, 0.938);
+  box-shadow: 1px 1px 3px rgba(18, 25, 41, 0.788);
 }
 
 .storyCard .storyDetailsContainer {

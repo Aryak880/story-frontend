@@ -35,14 +35,14 @@ h1 {
 }
 
 nav {
-  height: 10vh;
+  height: max-content;
   position: relative;
   font-size: 3rem;
   padding: 1rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 100%;
+  /* width: 100%; */
   flex-wrap: wrap;
   margin: 0 auto;
   background: chartreuse;

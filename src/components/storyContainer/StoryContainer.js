@@ -7,33 +7,28 @@ import NoStory from '../noStory/NoStory'
 const StoryContainer = () => {
     const [stories, setStories] = useState([])
     const [loading, setLoading] = useState(true)
-    const [noStory, setNoStory] = useState(false)
 
     useEffect(() => {
         setLoading(true)
 
-        fetch('https://protected-mesa-93618.herokuapp.com/stories').then(d => d.json()).then(data => {
-            setStories(data)
-            
-            let a = stories.length === 0 ? true : false
+        const fetchStories = async () => {
+            await fetch('https://protected-mesa-93618.herokuapp.com/stories').then(d => d.json()).then(data => {
+                setStories(data)
+            })
+        }
 
-            setNoStory(a)
-            
-            setLoading(false)
-        })
-        
+        fetchStories()
+        setLoading(false)
     }, [])
-
-    let i = 1
 
     return (
         <div className='storyContainer'>
             {
-                noStory && <NoStory />
+                stories.length===0 && <NoStory />
             }
 
             {
-                stories.map(x => <StoryCard key={x._id} data={x} i={i++}/>)
+                stories.map(x => <StoryCard key={x._id} data={x} />)
             }
 
             {loading && <Loading />}
