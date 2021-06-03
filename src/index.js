@@ -4,10 +4,12 @@ import { BrowserRouter} from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Footer from './components/footer/Footer'
 
 ReactDOM.render(
   <BrowserRouter>
       <App />
+      <Footer />
   </BrowserRouter>, 
   document.getElementById('root')
 )

@@ -17,6 +17,7 @@ form {
   padding: 2rem 0;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+  margin-top: 1.5rem;
 }
 
 form h1 {
