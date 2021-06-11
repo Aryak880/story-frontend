@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import StoryCard from '../storyCard/StoryCard'
 import './storyContainer.css'
-import Loading from '../loading/Loading'
+import Loading from '../../other/loading/Loading'
 import NoStory from '../noStory/NoStory'
+import StoryCard from '../storyCard/StoryCard'
 
 const StoryContainer = () => {
     const [stories, setStories] = useState([])

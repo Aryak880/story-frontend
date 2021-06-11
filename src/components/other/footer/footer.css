@@ -24,3 +24,9 @@ footer .footerName {
 footer img {
   height: 3.3rem;
 }
+
+.login-signup {
+  font-weight: bolder;
+  color: black;
+  font-size: 1.6rem;
+}

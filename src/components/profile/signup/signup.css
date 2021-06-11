@@ -1,0 +1,41 @@
+.signup {
+  border-radius: 8px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 1.6rem;
+  width: 50%;
+}
+
+.signup form select {
+  height: 2.8rem;
+  font-size: 2rem;
+  border-radius: 5px;
+  outline: none;
+  margin: 1rem;
+  background: transparent;
+  border: 1px dotted;
+  font-family: 'EB Garamond', serif;
+}
+
+#submit {
+  background: linear-gradient(-90deg, cornflowerblue, rgb(210, 105, 139));
+  color: #f1f1f1;
+  padding: 0.5rem;
+  font-size: 1.8rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 0.5rem;
+}
+
+@media only screen and (max-width: 450px) {
+  .signup {
+    width: 100%;
+    border-radius: 0;
+  }
+}
