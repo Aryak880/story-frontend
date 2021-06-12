@@ -34,6 +34,10 @@ h1 {
   font-size: 4rem;
 }
 
+h2 {
+  font-family: 'Montserrat', sans-serif;
+}
+
 nav {
   height: max-content;
   position: relative;

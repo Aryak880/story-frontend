@@ -22,6 +22,10 @@
   font-family: 'EB Garamond', serif;
 }
 
+.signup h2 {
+  font-family: 'Montserrat', sans-serif;
+}
+
 #submit {
   background: linear-gradient(-90deg, cornflowerblue, rgb(210, 105, 139));
   color: #f1f1f1;
@@ -31,6 +35,19 @@
   border: none;
   border-radius: 5px;
   margin: 0.5rem;
+  cursor: pointer;
+}
+
+#submit:active {
+  /* color: black; */
+  background: linear-gradient(90deg, cornflowerblue, rgb(210, 105, 139));
+}
+
+.passwordNotMatch {
+  color: red;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 @media only screen and (max-width: 450px) {

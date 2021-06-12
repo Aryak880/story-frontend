@@ -1,11 +1,15 @@
 import { Route, Switch, Link } from 'react-router-dom';
-import React from 'react';
+import React, {useState} from 'react';
 import StoryContainer from './components/story/storyContainer/StoryContainer'
 import PostStory from './components/story/postStory/PostStory'
 import Profile from './components/profile/Profile'
+import Login from './components/profile/login/Login'
+import Signup from './components/profile/signup/Signup'
 
 
 function App() {
+  const [user, setUser] = useState({})
+
   return (
     <div className="App">
       <nav className='navBar'>
@@ -24,7 +28,9 @@ function App() {
         <Switch>
           <Route path='/' component={StoryContainer} exact/>    
           <Route path='/story' component={PostStory} />
-          <Route path='/profile' component={Profile} />
+          <Route path='/profile' render={() => <Profile data={user}  setUserProfile={setUser}/>} exact />
+          <Route path='/profile/signup' render={() => <Signup setUserProfile={setUser}/>} />
+          <Route path='/profile/login' render={() => <Login setUserProfile={setUser}/>} />
           <Route component={Error} />
         </Switch>
     </div>

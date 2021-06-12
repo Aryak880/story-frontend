@@ -87,6 +87,5 @@ form .submit {
 @media only screen and (max-width: 768px) {
   form {
     width: 100%;
-    border-radius: 0;
   }
 }

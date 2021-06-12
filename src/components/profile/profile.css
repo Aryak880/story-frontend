@@ -1,4 +1,4 @@
-.profile {
+.profile-container {
   min-height: 80vh;
   font-size: 3rem;
   border-radius: 8px;
@@ -10,6 +10,27 @@
   align-items: center;
   margin: 1rem;
   margin-bottom: 0;
+}
+
+.profile {
+  border-radius: 8px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.profile p {
+  font-family: 'EB Garamond', serif;
+}
+
+.notLogInSignUp {
+  font-size: 2.2rem;
+  padding: 3rem;
 }
 
 @media only screen and (max-width: 450px) {
