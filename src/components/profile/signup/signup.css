@@ -26,7 +26,7 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-#submit {
+.submit-btn {
   background: linear-gradient(-90deg, cornflowerblue, rgb(210, 105, 139));
   color: #f1f1f1;
   padding: 0.5rem;
@@ -38,7 +38,7 @@
   cursor: pointer;
 }
 
-#submit:active {
+.submit-btn:active {
   /* color: black; */
   background: linear-gradient(90deg, cornflowerblue, rgb(210, 105, 139));
 }

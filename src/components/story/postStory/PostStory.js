@@ -10,7 +10,7 @@ const PostStory = () => {
         disLikes: 0,
         comments: []
     })
-
+    const [isStoryPosted, setIsStoryPosted] = useState(false)
     const [loading, setLoading] = useState(false)
 
 
@@ -18,39 +18,23 @@ const PostStory = () => {
             e.preventDefault()
             setLoading(true)
             
-            fetch('https://protected-mesa-93618.herokuapp.com/story', {
-        
-            // Adding method type
+            fetch('https://protected-mesa-93618.herokuapp.com/me/story', {
             method: "POST",
-            
-            // Adding body or contents to send
-            body: JSON.stringify({
-                ...story
-            }),
-            
-            // Adding headers to the request
+            body: JSON.stringify({...story}),
             headers: {
+                'Authorization': `Bearer ${localStorage.getItem('aryak-story-app-userToken')}`,
                 "Content-type": "application/json; charset=UTF-8"
             }
             })
-            
-            // Converting to JSON
             .then(response => { 
-                response.json()
                 setLoading(false)
                 response.status === 201 && 
                 alert("Your story posted successfull!, you can check on the read stories tab")
 
-                console.log(response)
+                return response.json()
             })
-            
-            // Displaying results to console
             .then(json => {
-                // if(json.error){
-                // alert(`Story doesn't posted, ${json.error}`)
-                // }
-
-                console.log(json)
+                // console.log(json)
             });
 
             setstory({

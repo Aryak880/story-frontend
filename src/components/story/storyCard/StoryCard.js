@@ -24,19 +24,10 @@ const StoryCard = ({data}) => {
         }
     }
 
-    if(owner.profile === ""){
-        let a = ['book', 'pen', 'pencile', 'bird', 'water', 'space']
-
-        owner.profile = `https://source.unsplash.com/400x400/?${a[Math.floor((Math.random() * 5))]}`
-    }
-
 
     return (
         <div className='storyCard'>
             <div className="ownerDetailsContainer">
-                <div className="ownerProfile">
-                    <img src={owner.profile} alt="Profile" />
-                </div>
                 <div className='ownerDetails'>
                     <b>Name: </b><span>{owner.name} </span><br />
                     <b> Age: </b><span>{owner.age}</span><br />

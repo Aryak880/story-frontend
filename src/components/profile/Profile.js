@@ -2,8 +2,10 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import './profile.css'
 
-const Profile = ({data,  setUserProfile}) => {
+const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
 
+
+    
     const handleLogOut = async () => {
         fetch('https://protected-mesa-93618.herokuapp.com/user/signup', {
             method: "POST",
@@ -14,22 +16,22 @@ const Profile = ({data,  setUserProfile}) => {
         }).then(response => {
             return response.json()
         }).then(data => {
-            setUserProfile({})
             localStorage.setItem("aryak-story-app-userToken", undefined)
+            localStorage.setItem('aryak-story-app-userData', undefined)
+            setIsLoggedIn(false)
         })
     }
 
     var com
-
-    if((Object.keys(data).length !== 0))
+    if(isLoggedIn)
         com = <div className="profile LogInSignUp">        
-                <label>Name: {data.name}</label><br />
-                <label>Age: {data.age}</label><br />
-                <label>Email: {data.email}</label><br />
-                <label>Facebook: {data.facebook}</label><br />
-                <label>Instagram: {data.instagram}</label><br />
-                <label>Gender: {data.gender}</label><br />
-                <button onClick={handleLogOut}>Log out</button>
+                <label>Name: {userData.name}</label><br />
+                <label>Age: {userData.age}</label><br />
+                <label>Email: {userData.email}</label><br />
+                <label>Facebook: {userData.facebook}</label><br />
+                <label>Instagram: {userData.instagram}</label><br />
+                <label>Gender: {userData.gender}</label><br />
+                <button onClick={handleLogOut} className='submit-btn'>Log out</button>
             </div>
     else {
         com = <div className='notLogInSignUp profile'>

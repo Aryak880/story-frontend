@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 import Loading from '../../other/loading/Loading'
 import './login.css'
 
-const Login = ({setUserProfile}) => {
+const Login = ({setIsLoggedIn}) => {
     const history = useHistory()
 
     const [login, setLogin] = useState({
@@ -34,25 +34,31 @@ const Login = ({setUserProfile}) => {
 
             console.log(response.status)
 
-            if(response.status === 201) 
-                return  response.json()
+            // if(response.status === 201) 
+            //     return  response.json()
 
-            else {
-                return {
-                    error: "Cann't find the user!"
-                }
-            }
+            // else {
+            //     return {
+            //         error: "Cann't find the user!"
+            //     }
+            // }
+
+            return response.json();
 
         }).then((data) => {
+
+            if(data.errors){
+                console.log(data.errors)
+            }
             
-            if(data.user && data.token){
+            else if(data.user && data.token){
                 localStorage.setItem('aryak-story-app-userToken', data.token)
-                setUserProfile(data.user)
+                localStorage.setItem('aryak-story-app-userData', data.user)
+                setIsLoggedIn(true)
                 history.push('/profile')    
             }
-            else {
-                console.log(data)
-            }
+            
+            console.log(data)
         })
     }
 
@@ -75,7 +81,7 @@ const Login = ({setUserProfile}) => {
                         value={login.password}
                         onChange={handleChange}
                     /></label>
-                    <label><button type="submit" id="submit" disabled={(login.email.length === 0) || (login.password.length === 0)}>Submit</button></label>
+                    <label><button type="submit" className="submit-btn" disabled={(login.email.length === 0) || (login.password.length === 0)}>Submit</button></label>
                 </form>
                 <br />
                 <br />

@@ -8,6 +8,7 @@
   margin: 0.5rem 0;
   border-radius: 5px;
   font-size: 1.6rem;
+  max-height: 25rem;
 }
 
 .storyCard .ownerDetailsContainer {
@@ -33,7 +34,6 @@
 .storyCard .storyDetailsContainer {
   flex: 4;
   overflow: scroll;
-  height: 33rem;
   text-align: center;
 }
 
@@ -46,11 +46,6 @@
 .storyCard .storyDetailsContainer h2 {
   margin-top: 1rem;
   font-family: 'Mate SC', serif;
-}
-
-.storyCard .ownerDetailsContainer .ownerProfile img {
-  height: 20rem;
-  width: 20rem;
 }
 
 @media only screen and (max-width: 768px) {

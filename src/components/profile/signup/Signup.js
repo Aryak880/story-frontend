@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 import Loading from '../../other/loading/Loading'
 import './signup.css'
 
-const Signup = ({setUserProfile}) => {
+const Signup = ({setUserProfile, setIsLoggedIn}) => {
     const history = useHistory()
 
     const [user, setUser] = useState({
@@ -42,7 +42,9 @@ const Signup = ({setUserProfile}) => {
                 return response.json()
         }).then(data => {
             localStorage.setItem('aryak-story-app-userToken', data.token)
+            localStorage.setItem('aryak-story-app-userData', data.user)
             setUserProfile(data.user)
+            setIsLoggedIn(true)
             history.push('/profile')
         })        
     }
@@ -131,7 +133,7 @@ const Signup = ({setUserProfile}) => {
                             *password not match
                             </span>
                         }
-                        <button type="submit" id="submit" disabled={passwordNotMatch !== user.password}>Submit</button>
+                        <button type="submit" className="submit-btn" disabled={passwordNotMatch !== user.password}>Submit</button>
                 </form>
                 {loading && <Loading />}
             </div>
