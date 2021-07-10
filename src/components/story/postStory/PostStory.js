@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import Loading from '../../other/loading/Loading'
+import NotLoggedIn from '../../other/notLoggedIn/NotLoggedIn'
 import './postStory.css'
 
-const PostStory = () => {
+const PostStory = ({isLoggedIn}) => {
     const [story, setstory] = useState({
         title: ``,
         story: ``,
@@ -34,7 +35,7 @@ const PostStory = () => {
                 return response.json()
             })
             .then(json => {
-                // console.log(json)
+                console.log(json)
             });
 
             setstory({
@@ -44,38 +45,46 @@ const PostStory = () => {
            
     }
 
+
+            
+    // <div className='notLogged-story-post'>
+    //     <NotLoggedIn />
+    // </div>
+
+
     return (<>
                 <form onSubmit={handleSubmit}>
-                    <div className='storyForm'>
-                        <h1>Story's details</h1>
-                        <br />
+                <div className='storyForm'>
+                    <h1>Story's details</h1>
+                    <br />
 
-                        <label>Story Title<span>*</span><br /> 
-                            <textarea 
-                                className='title' 
-                                required 
-                                name="title" 
-                                value={story.title} 
-                                onChange={e => setstory({...story, title: e.target.value})}
-                                
-                            ></textarea>
-                        </label><br />
+                    <label>Story Title<span>*</span><br /> 
+                        <textarea 
+                            className='title' 
+                            required 
+                            name="title" 
+                            value={story.title} 
+                            onChange={e => setstory({...story, title: e.target.value})}
+                            
+                        ></textarea>
+                    </label><br />
 
-                        <label>Story<span>*</span><br />
-                            <textarea 
-                                className='story' 
-                                required 
-                                name="story" 
-                                value={story.story} 
-                                onChange={e => setstory({...story, story: e.target.value})}
-                                placeholder="Enter story"
-                                minLength={500}
-                            ></textarea>
-                        </label><br />
-                    </div>
+                    <label>Story<span>*</span><br />
+                        <textarea 
+                            className='story' 
+                            required 
+                            name="story" 
+                            value={story.story} 
+                            onChange={e => setstory({...story, story: e.target.value})}
+                            placeholder="Enter story"
+                            minLength={500}
+                        ></textarea>
+                    </label><br />
+                </div>
 
-                    <button type="submit" className='submit'>Submit</button>
-                </form>
+                <button type="submit" className='submit'>Submit</button>
+            </form>
+
                 {loading && <Loading />}
             </>
     )

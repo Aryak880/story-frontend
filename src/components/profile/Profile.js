@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import NotLoggedIn from '../other/notLoggedIn/NotLoggedIn'
 import './profile.css'
 
 const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
@@ -34,10 +34,7 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
                 <button onClick={handleLogOut} className='submit-btn'>Log out</button>
             </div>
     else {
-        com = <div className='notLogInSignUp profile'>
-                <h2><Link to='/profile/login'>Log in</Link> please</h2><br /><br />
-                <p>Don't you have an account? <Link to='/profile/signup'>Create here</Link></p>
-            </div>
+        com = <NotLoggedIn />
     }
 
     return (

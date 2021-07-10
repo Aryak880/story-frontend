@@ -5,7 +5,6 @@
   background: rgba(255, 255, 255, 0.25);
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   padding: 1.6rem;
   width: 50%;
@@ -43,11 +42,16 @@
   background: linear-gradient(90deg, cornflowerblue, rgb(210, 105, 139));
 }
 
-.passwordNotMatch {
+.error-message {
   color: red;
   font-weight: bold;
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  text-align: center;
+}
+
+.passwordInputType {
+  color: #4f4f4f;
 }
 
 @media only screen and (max-width: 450px) {

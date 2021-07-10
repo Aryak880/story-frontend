@@ -1,9 +1,13 @@
 import React, {useState} from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import Loading from '../../other/loading/Loading'
+import Error from '../../other/error/Error'
 import './login.css'
 
-const Login = ({setIsLoggedIn}) => {
+const Login = ({
+    setIsLoggedIn, 
+    setUserProfile,
+}) => {
     const history = useHistory()
 
     const [login, setLogin] = useState({
@@ -11,6 +15,8 @@ const Login = ({setIsLoggedIn}) => {
         password: ''
     })
     const [loading, setLoading] = useState(false)
+    const [userFound, setUserFound] = useState(true)
+
 
     const handleChange = (e) => {
         setLogin({
@@ -23,7 +29,7 @@ const Login = ({setIsLoggedIn}) => {
         e.preventDefault()
         setLoading(true)
 
-        fetch('https://protected-mesa-93618.herokuapp.com/user/signup', {
+        fetch('https://protected-mesa-93618.herokuapp.com/user/login', {
             method: 'POST',
             body: JSON.stringify({...login}),
             headers: {
@@ -32,33 +38,31 @@ const Login = ({setIsLoggedIn}) => {
         }).then(response => {
             setLoading(false)
 
-            console.log(response.status)
+            if(response.status === 200) 
+                return  response.json()
 
-            // if(response.status === 201) 
-            //     return  response.json()
+            else {
+                return {
+                    error: "Cann't find the user!"
+                }
+            }
 
-            // else {
-            //     return {
-            //         error: "Cann't find the user!"
-            //     }
-            // }
-
-            return response.json();
 
         }).then((data) => {
 
-            if(data.errors){
-                console.log(data.errors)
+            if(data.error){
+                setIsLoggedIn(false)
+                setUserFound(false)
             }
             
-            else if(data.user && data.token){
+            else{
                 localStorage.setItem('aryak-story-app-userToken', data.token)
                 localStorage.setItem('aryak-story-app-userData', data.user)
                 setIsLoggedIn(true)
-                history.push('/profile')    
+                setUserFound(true)
+                setUserProfile(data.user)
+                history.push('/profile')
             }
-            
-            console.log(data)
         })
     }
 
@@ -67,27 +71,31 @@ const Login = ({setIsLoggedIn}) => {
             <div className='login'>
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit}>
-                    <label><input 
+                    <input 
                         type='text' 
                         placeholder="email" 
                         name="email" 
                         value={login.email}
                         onChange={handleChange}
-                    /></label>                    
-                    <label><input 
+                    />                    
+                    <input 
                         type='password' 
                         placeholder="password" 
                         name="password" 
                         value={login.password}
                         onChange={handleChange}
-                    /></label>
-                    <label><button type="submit" className="submit-btn" disabled={(login.email.length === 0) || (login.password.length === 0)}>Submit</button></label>
+                    />
+                    {
+                        !true && <span className='error-message login-user-not-found'>User not found! check email and password</span>
+                    }
+                    <button type="submit" className="submit-btn" disabled={(login.email.length === 0) || (login.password.length === 0)}>Submit</button>
                 </form>
                 <br />
                 <br />
                 <p>Do not have account? <Link to='/profile/signup'>Create here</Link></p>
             </div>
             {loading && <Loading />}
+            {!userFound && <Error text="User not found! Or you have entred wrong password or email"/>}
         </div>
     )
 }
