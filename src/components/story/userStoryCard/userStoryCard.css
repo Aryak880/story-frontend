@@ -1,0 +1,41 @@
+.storyCard {
+  width: 100%;
+  display: flex;
+  padding: 1rem;
+  background: rgba(225, 225, 225, 0.4);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  font-size: 1.6rem;
+  max-height: 25rem;
+  flex: 1;
+  margin: 1rem;
+}
+
+.storyCard .storyDetailsContainer {
+  overflow: scroll;
+  text-align: center;
+}
+
+.storyCard .storyDetailsContainer p {
+  text-align: left;
+  margin-top: 1rem;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.storyCard .storyDetailsContainer h2 {
+  margin-top: 1rem;
+  font-family: 'Mate SC', serif;
+}
+
+@media only screen and (max-width: 768px) {
+  .storyCard {
+    flex-direction: column;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 60rem;
+  }
+}

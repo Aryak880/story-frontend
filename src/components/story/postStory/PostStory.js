@@ -1,17 +1,19 @@
 import React, {useState} from 'react'
 import Loading from '../../other/loading/Loading'
-import NotLoggedIn from '../../other/notLoggedIn/NotLoggedIn'
+import Error from '../../other/error/Error'
 import './postStory.css'
 
 const PostStory = ({isLoggedIn}) => {
     const [story, setstory] = useState({
         title: ``,
         story: ``,
+        category: '',
         likes: 0,
         disLikes: 0,
         comments: []
     })
-    const [isStoryPosted, setIsStoryPosted] = useState(false)
+
+    const [isStoryPosted, setIsStoryPosted] = useState('')
     const [loading, setLoading] = useState(false)
 
 
@@ -29,8 +31,11 @@ const PostStory = ({isLoggedIn}) => {
             })
             .then(response => { 
                 setLoading(false)
-                response.status === 201 && 
-                alert("Your story posted successfull!, you can check on the read stories tab")
+                if(response.status === 201){
+                    setIsStoryPosted("Your Story is posted go and check in read story tab")
+                }else{
+                    setIsStoryPosted("Sorry your story is not posted!")
+                }
 
                 return response.json()
             })
@@ -41,16 +46,10 @@ const PostStory = ({isLoggedIn}) => {
             setstory({
                 title: '',
                 story: '',
+                category: '',
             })
            
     }
-
-
-            
-    // <div className='notLogged-story-post'>
-    //     <NotLoggedIn />
-    // </div>
-
 
     return (<>
                 <form onSubmit={handleSubmit}>
@@ -68,6 +67,15 @@ const PostStory = ({isLoggedIn}) => {
                             
                         ></textarea>
                     </label><br />
+                    <label>Category<span>*</span><br />
+                        <textarea
+                            className='title'
+                            name="category"
+                            required
+                            value={story.category}
+                            onChange={e => setstory({...story, category: e.target.value})}
+                         ></textarea><br />
+                    </label>
 
                     <label>Story<span>*</span><br />
                         <textarea 
@@ -83,6 +91,7 @@ const PostStory = ({isLoggedIn}) => {
                 </div>
 
                 <button type="submit" className='submit'>Submit</button>
+                {isStoryPosted.length > 0 && <Error text={isStoryPosted} />}
             </form>
 
                 {loading && <Loading />}

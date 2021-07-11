@@ -67,7 +67,7 @@ form .storyForm .title {
 }
 
 form .storyForm .story {
-  min-height: 15rem;
+  min-height: 20rem;
   font-size: 1.8rem;
   font-family: 'Noto Sans', sans-serif;
 }

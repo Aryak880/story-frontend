@@ -47,7 +47,9 @@ nav {
   justify-content: space-around;
   align-items: center;
   margin: 0 auto;
-  background: chartreuse;
+  background: #e0eafc;
+  background: -webkit-linear-gradient(to right, #cfdef3, #e0eafc);
+  background: linear-gradient(to right, #cfdef3, #e0eafc);
 }
 
 nav a {

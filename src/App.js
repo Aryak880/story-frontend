@@ -1,5 +1,5 @@
 import { Route, Switch, Link } from 'react-router-dom';
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import StoryContainer from './components/story/storyContainer/StoryContainer'
 import PostStory from './components/story/postStory/PostStory'
 import Profile from './components/profile/Profile'
