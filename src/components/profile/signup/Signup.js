@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import Loading from '../../other/loading/Loading'
 import Error from '../../other/error/Error'
 
@@ -161,6 +161,9 @@ const Signup = ({ setUserProfile, setIsLoggedIn }) => {
                     <span className='passwordInputType error-message'>
                         *Password should not contain "password" and Minimum length should be 7
                     </span>
+                    
+                    <br />
+                    <span className='passwordInputType error-message'>Do you have an account? Do <Link to='/profile/login'>Login</Link></span>
                 </form>
                 {loading && <Loading />}
             </div>

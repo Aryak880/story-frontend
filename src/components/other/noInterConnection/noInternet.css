@@ -1,0 +1,26 @@
+.noInternetConnection {
+  position: absolute;
+  display: flex;
+  top: 25vh;
+  z-index: 123232;
+  justify-content: center;
+  border-radius: 1rem;
+  color: #f4f4f4;
+  font-family: 'Mate SC', serif;
+  text-align: center;
+  align-items: center;
+  font-size: 4rem;
+  height: 50vh;
+  width: 50vw;
+  background: hsla(261, 38%, 44%, 1);
+  background: -webkit-linear-gradient(
+    to right,
+    hsla(273, 30%, 17%, 1),
+    hsla(261, 43%, 45%, 1) A5
+  );
+  background: linear-gradient(
+    to right,
+    hsla(273, 69%, 25%, 1),
+    hsla(261, 43%, 45%, 1)
+  );
+}

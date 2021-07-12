@@ -26,8 +26,6 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
         })
     }
 
-///me/stories
-
     const handleSeeStory = async () => {
         setLoading(true)
         fetch('https://protected-mesa-93618.herokuapp.com/me/stories', {

@@ -5,13 +5,14 @@ import PostStory from './components/story/postStory/PostStory'
 import Profile from './components/profile/Profile'
 import Login from './components/profile/login/Login'
 import Signup from './components/profile/signup/Signup'
+import NoInternet from './components/other/noInterConnection/NoInternet'
 
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [userData, setUserData] = useState(localStorage.getItem('aryak-story-app-userData') !== undefined ? localStorage.getItem('aryak-story-app-userData') : {})
 
-  console.log(localStorage.getItem('aryak-story-app-userData'))  
+  // console.log(localStorage.getItem('aryak-story-app-userData'))  
 
   return (
     <div className="App">
@@ -30,6 +31,8 @@ function App() {
             </div>
         </div>
         {isLoggedIn && <Link to="/story" className='nav-link'>Post Story</Link>}
+
+        {!window.navigator.onLine && <NoInternet />}
       </nav>
 
        <Switch>

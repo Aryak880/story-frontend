@@ -4,7 +4,7 @@ import './noStory.css'
 const NoStory = () => {
     return (
         <div className="noStory">
-            Sorry no one yet posted any story!, Why not you become first one
+            Sorry no one yet posted any story! Why don't you become first one
         </div>
     )
 }
