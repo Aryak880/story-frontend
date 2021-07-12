@@ -12,8 +12,6 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [userData, setUserData] = useState(localStorage.getItem('aryak-story-app-userData') !== undefined ? localStorage.getItem('aryak-story-app-userData') : {})
 
-  // console.log(localStorage.getItem('aryak-story-app-userData'))  
-
   return (
     <div className="App">
       <nav className='navBar'>
@@ -38,8 +36,7 @@ function App() {
        <Switch>
           <Route path='/' component={StoryContainer} exact/>    
           <Route path='/story' 
-            component={PostStory} 
-            // userData={userData} 
+            component={PostStory}
             setIsLoggedIn={setIsLoggedIn} 
             isLoggedIn={isLoggedIn}
           />
