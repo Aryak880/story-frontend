@@ -6,6 +6,7 @@ import Profile from './components/profile/Profile'
 import Login from './components/profile/login/Login'
 import Signup from './components/profile/signup/Signup'
 import NoInternet from './components/other/noInterConnection/NoInternet'
+import SingleStory from './components/story/singleStory/SingleStory'
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
                 }
             </div>
         </div>
+        
         {isLoggedIn && <Link to="/story" className='nav-link'>Post Story</Link>}
 
         {!window.navigator.onLine && <NoInternet />}
@@ -40,6 +42,9 @@ function App() {
             setIsLoggedIn={setIsLoggedIn} 
             isLoggedIn={isLoggedIn}
           />
+
+          <Route path='/read-story' component={SingleStory} />
+
           <Route 
               path='/profile' 
               render={() => <Profile 

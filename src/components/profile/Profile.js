@@ -67,7 +67,7 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
             <div className='userStoryContainer'>
 
                 {
-                    isLoggedIn && stories.map(x => <UserStoryCard key={x._id} data={x} />)
+                    isLoggedIn && stories.map(x => <UserStoryCard key={x._id} data={x} handleSeeStory={handleSeeStory}/>)
                 }
 
                 {loading && <Loading />}

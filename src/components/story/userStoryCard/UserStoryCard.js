@@ -1,12 +1,28 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom';
 import './userStoryCard.css'
+// import Loading from '../../other/loading/Loading'
 
 
-const StoryCard = ({data}) => {
+const UserStoryCard = ({data, handleSeeStory}) => {
+    // const [loading, setLoading] = useState(true)
 
 
-    var {story, title} = data
+    const handleStoryDelete = async (id) => {
+        fetch('https://protected-mesa-93618.herokuapp.com/me/story/'+id, {
+            method: "DELETE",
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('aryak-story-app-userToken')}`,
+                "Content-type": "application/json; charset=UTF-8"
+            }
+            })
+            .then(response => { 
+                handleSeeStory()
+                return response.json()
+            }).then(data => console.log(data))
+    }
+
+    var {story, title, _id} = data
 
     return (
         <div className='storyCard'>
@@ -14,8 +30,12 @@ const StoryCard = ({data}) => {
                 <h2>{title}</h2>
                 <p>{story}</p>
             </div>
+            <div id="user-delete-btn-container">
+                <Link className='submit-btn' to={`/read-story/`+_id}>Read full story</Link>
+                <button type="submit" className='submit-btn' onClick={() => handleStoryDelete(_id)}>Delete</button>
+            </div>
         </div>
     )
 }
 
-export default StoryCard
+export default UserStoryCard

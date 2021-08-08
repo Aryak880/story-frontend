@@ -1,6 +1,7 @@
 .storyCard {
   width: 100%;
   display: flex;
+  flex-direction: column;
   padding: 1rem;
   background: rgba(225, 225, 225, 0.4);
   -webkit-backdrop-filter: blur(10px);
@@ -9,32 +10,22 @@
   border-radius: 5px;
   font-size: 1.6rem;
   max-height: 25rem;
-}
-
-.storyCard .ownerDetailsContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.8rem;
-  font-family: 'Shadows Into Light', cursive;
-  text-align: center;
-}
-
-.storyCard .ownerDetailsContainer {
   flex: 1;
-  margin-right: 1rem;
-}
-
-.storyCard .ownerDetailsContainer .ownerProfile img {
-  border-radius: 1rem;
-  box-shadow: 1px 1px 3px rgba(18, 25, 41, 0.788);
+  margin: 1rem;
 }
 
 .storyCard .storyDetailsContainer {
-  flex: 4;
-  overflow: scroll;
+  overflow: hidden;
+  height: 15rem;
   text-align: center;
+  padding: 1rem;
+}
+
+.storyCard .read-full-story{
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0.5rem;
 }
 
 .storyCard .storyDetailsContainer p {

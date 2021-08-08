@@ -90,7 +90,7 @@ const PostStory = ({isLoggedIn}) => {
                     </label><br />
                 </div>
 
-                <button type="submit" className='submit'>Submit</button>
+                <button type="submit" className='submit-btn'>Submit</button>
                 {isStoryPosted.length > 0 && <Error text={isStoryPosted} />}
             </form>
 
