@@ -3,9 +3,6 @@ import Loading from '../../other/loading/Loading'
 import './singleStory.css'
 
 const SingleStory = () => {
-    const URL = window.location.href
-    const storyId = URL.substring(URL.search('read-story')+11, URL.length)
-
     const [stories, setStories] = useState({})
     const [loading, setLoading] = useState(true)
     const [storyOwner, setStoryOwner] = useState({})
@@ -14,6 +11,9 @@ const SingleStory = () => {
     useEffect(() => {
         setLoading(true)
 
+        const URL = window.location.href
+        const storyId = URL.substring(URL.search('read-story')+11, URL.length)
+        
         const fetchStories = async () => {
             await fetch(`https://protected-mesa-93618.herokuapp.com/read-story/${storyId}`).then(d => d.json()).then(data => {
                 setStories(data)
