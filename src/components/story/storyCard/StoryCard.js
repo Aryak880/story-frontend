@@ -16,7 +16,6 @@ const StoryCard = ({data}) => {
             </div>
             <div className='read-full-story'>
                 <Link to={`/read-story/`+_id}>Read full story</Link>
-                {console.log(data)}
             </div>
         </div>
     )

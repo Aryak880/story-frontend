@@ -11,17 +11,17 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
     
 
     const handleLogOut = async () => {
-        fetch('https://protected-mesa-93618.herokuapp.com/user/signup', {
+        fetch('https://protected-mesa-93618.herokuapp.com/user/logout', {
             method: "POST",
-            body: JSON.stringify({token: localStorage.getItem("aryak-story-app-userToken")}),
+            body: JSON.stringify({token: sessionStorage.getItem("aryak-story-app-userToken")}),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
             }
         }).then(response => {
             return response.json()
         }).then(data => {
-            localStorage.setItem("aryak-story-app-userToken", undefined)
-            localStorage.setItem('aryak-story-app-userData', undefined)
+            sessionStorage.removeItem("aryak-story-app-userToken")
+            sessionStorage.removeItem('aryak-story-app-userData')
             setIsLoggedIn(false)
         })
     }
@@ -31,7 +31,7 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
         fetch('https://protected-mesa-93618.herokuapp.com/me/stories', {
             method: "GET",
             headers: new Headers({
-                'Authorization': 'Bearer '+localStorage.getItem("aryak-story-app-userToken"), 
+                'Authorization': 'Bearer '+sessionStorage.getItem("aryak-story-app-userToken"), 
                 "Content-type": "application/json; charset=UTF-8"
               }),
         }).then(response => {
@@ -39,6 +39,22 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
         }).then(data => {
             setStories(data)
             setLoading(false)
+        })
+    }
+
+    const handleDeleteProfile = async () => {
+        fetch('https://protected-mesa-93618.herokuapp.com/user/me', {
+            method: "DELETE",
+            headers: new Headers({
+                'Authorization': 'Bearer '+sessionStorage.getItem("aryak-story-app-userToken"), 
+                "Content-type": "application/json; charset=UTF-8"
+              }),
+        }).then(response => {
+            return response.json()
+        }).then(data => {
+            sessionStorage.removeItem("aryak-story-app-userToken")
+            sessionStorage.removeItem('aryak-story-app-userData')
+            setIsLoggedIn(false)
         })
     }
 
@@ -52,6 +68,7 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
                 <label>Instagram: {userData.instagram}</label><br />
                 <label>Gender: {userData.gender}</label><br />
                 <button onClick={handleLogOut} className='submit-btn'>Log out</button>
+                <button onClick={handleDeleteProfile} className='submit-btn'>DELETE Account!</button>
                 <button onClick={handleSeeStory} className='submit-btn'>See all your story</button>
             </div>
     else {

@@ -8,8 +8,8 @@ const PostStory = ({isLoggedIn}) => {
         title: ``,
         story: ``,
         category: '',
-        likes: 0,
-        disLikes: 0,
+        likes: [],
+        disLikes: [],
         comments: []
     })
 
@@ -25,7 +25,7 @@ const PostStory = ({isLoggedIn}) => {
             method: "POST",
             body: JSON.stringify({...story}),
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('aryak-story-app-userToken')}`,
+                'Authorization': `Bearer ${sessionStorage.getItem('aryak-story-app-userToken')}`,
                 "Content-type": "application/json; charset=UTF-8"
             }
             })
@@ -39,9 +39,6 @@ const PostStory = ({isLoggedIn}) => {
 
                 return response.json()
             })
-            .then(json => {
-                console.log(json)
-            });
 
             setstory({
                 title: '',

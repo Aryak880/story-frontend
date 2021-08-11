@@ -11,7 +11,12 @@ import SingleStory from './components/story/singleStory/SingleStory'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [userData, setUserData] = useState(localStorage.getItem('aryak-story-app-userData') !== undefined ? localStorage.getItem('aryak-story-app-userData') : {})
+  const [userData, setUserData] = useState(sessionStorage.getItem('aryak-story-app-userData') !== null ? JSON.parse(sessionStorage.getItem('aryak-story-app-userData')) : {})
+
+  window.onunload = function () {
+    sessionStorage.clear();
+  }
+
 
   return (
     <div className="App">
@@ -43,7 +48,10 @@ function App() {
             isLoggedIn={isLoggedIn}
           />
 
-          <Route path='/read-story' component={SingleStory} />
+          <Route path='/read-story' render={() => <SingleStory 
+                                                      userData={userData}
+                                                  />}
+          />
 
           <Route 
               path='/profile' 
