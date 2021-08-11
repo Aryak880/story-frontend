@@ -5,7 +5,6 @@ import PostStory from './components/story/postStory/PostStory'
 import Profile from './components/profile/Profile'
 import Login from './components/profile/login/Login'
 import Signup from './components/profile/signup/Signup'
-import NoInternet from './components/other/noInterConnection/NoInternet'
 import SingleStory from './components/story/singleStory/SingleStory'
 
 
@@ -22,7 +21,7 @@ function App() {
     <div className="App">
       <nav className='navBar'>
         <Link to="/" className='nav-link'>Read Stories</Link>
-        <div className='nav-profile'>
+        <div className='nav-profile' style={Object.keys(userData).length === 0 ? {borderRight: "none "} : {}}>
           <Link to='/profile'><img src="https://img.icons8.com/ios-glyphs/30/000000/test-account.png" alt="profile"/></Link>
 
             <div className='login-signup'>
@@ -36,12 +35,12 @@ function App() {
         </div>
         
         {isLoggedIn && <Link to="/story" className='nav-link'>Post Story</Link>}
-
-        {!window.navigator.onLine && <NoInternet />}
       </nav>
 
        <Switch>
-          <Route path='/' component={StoryContainer} exact/>    
+          <Route path='/' 
+            render={() => <StoryContainer userData={userData}/>}
+            exact/>    
           <Route path='/story' 
             component={PostStory}
             setIsLoggedIn={setIsLoggedIn} 

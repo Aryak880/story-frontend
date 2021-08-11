@@ -1,0 +1,18 @@
+.create-account-container{
+    font-size: 2rem;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.25);
+    padding: 2.2rem;
+    border-radius: 1rem;
+    width: 100%;
+    text-align: center;
+    color: #f9f9f9;
+    font-family: 'Mate SC', serif;
+}
+
+.create-account-container a{
+    color: #f9f9f9;
+    text-decoration-line: underline;
+    text-decoration-color: rgba(255, 255, 0, 0.801);
+}
