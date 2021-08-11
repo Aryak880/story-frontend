@@ -14,3 +14,7 @@
     font-family: 'Mate SC', serif;
     margin-bottom: 0.5rem;
 }
+
+.comment-card-container p {
+    white-space: pre-wrap;
+}

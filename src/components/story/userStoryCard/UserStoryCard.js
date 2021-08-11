@@ -19,7 +19,7 @@ const UserStoryCard = ({data, handleSeeStory}) => {
             .then(response => { 
                 handleSeeStory()
                 return response.json()
-            }).then(data => console.log(data))
+            })
     }
 
     var {story, title, _id} = data

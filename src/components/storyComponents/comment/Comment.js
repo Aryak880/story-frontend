@@ -39,8 +39,6 @@ const Comment = ({ comments, userData, storyId }) => {
                 }
 
                 return response.json()                
-            }).then(d => {
-                console.log(d)
             })
         }    
     }
