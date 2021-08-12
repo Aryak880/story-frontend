@@ -3,13 +3,13 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  padding-bottom: 0;
   background: rgba(225, 225, 225, 0.4);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   margin: 0.5rem 0;
   border-radius: 5px;
   font-size: 1.6rem;
-  max-height: 25rem;
   flex: 1;
   margin: 1rem;
 }
@@ -19,13 +19,19 @@
   height: 15rem;
   text-align: center;
   padding: 1rem;
+  max-height: 25rem;
 }
 
 .storyCard .read-full-story{
-  position: fixed;
-  top: 0;
-  left: 0;
   padding: 0.5rem;
+  padding-bottom: 0;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.storyCard .read-full-story a{
+  color: black;
+  text-shadow: 0.2px 0.2px #585757;
 }
 
 .storyCard .storyDetailsContainer p {
@@ -46,6 +52,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 60rem;
+    height: 70rem;
+    padding-bottom: 0;
   }
 }

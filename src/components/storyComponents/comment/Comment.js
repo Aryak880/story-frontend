@@ -35,7 +35,7 @@ const Comment = ({ comments, userData, storyId }) => {
             })
             .then(response =>  {
                 if(response.status === 200){
-                    setInputComment()
+                    setInputComment('')
                 }
 
                 return response.json()                

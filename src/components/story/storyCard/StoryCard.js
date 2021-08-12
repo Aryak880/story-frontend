@@ -11,11 +11,11 @@ const StoryCard = ({data}) => {
     return (
         <div className='storyCard'>
             <div className="storyDetailsContainer">
-                <h2>{title}</h2>
+                <h2 className='text-white'>{title}</h2>
                 <p>{story}</p>
             </div>
             <div className='read-full-story'>
-                <Link to={`/read-story/`+_id}>Read full story</Link>
+                <Link to={`/read-story/`+_id}>Read full story &rarr;</Link>
             </div>
         </div>
     )

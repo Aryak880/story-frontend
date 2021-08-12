@@ -15,14 +15,15 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
             method: "POST",
             body: JSON.stringify({token: sessionStorage.getItem("aryak-story-app-userToken")}),
             headers: {
+                'Authorization': `Bearer ${sessionStorage.getItem('aryak-story-app-userToken')}`,
                 "Content-type": "application/json; charset=UTF-8"
             }
         }).then(response => {
-            return response.json()
-        }).then(data => {
-            sessionStorage.removeItem("aryak-story-app-userToken")
-            sessionStorage.removeItem('aryak-story-app-userData')
-            setIsLoggedIn(false)
+            if(response.status !== 500){
+                sessionStorage.removeItem("aryak-story-app-userToken")
+                sessionStorage.removeItem('aryak-story-app-userData')
+                setIsLoggedIn(false)
+            }
         })
     }
 
