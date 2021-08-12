@@ -44,19 +44,21 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
     }
 
     const handleDeleteProfile = async () => {
-        fetch('https://protected-mesa-93618.herokuapp.com/user/me', {
+        if(window.confirm("Do you really want to delete your account!")){
+            fetch('https://protected-mesa-93618.herokuapp.com/user/me', {
             method: "DELETE",
             headers: new Headers({
                 'Authorization': 'Bearer '+sessionStorage.getItem("aryak-story-app-userToken"), 
                 "Content-type": "application/json; charset=UTF-8"
               }),
-        }).then(response => {
-            return response.json()
-        }).then(data => {
-            sessionStorage.removeItem("aryak-story-app-userToken")
-            sessionStorage.removeItem('aryak-story-app-userData')
-            setIsLoggedIn(false)
-        })
+            }).then(response => {
+                return response.json()
+            }).then(data => {
+                sessionStorage.removeItem("aryak-story-app-userToken")
+                sessionStorage.removeItem('aryak-story-app-userData')
+                setIsLoggedIn(false)
+            })
+        }
     }
 
     var com

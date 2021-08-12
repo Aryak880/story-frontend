@@ -6,6 +6,7 @@ import Profile from './components/profile/Profile'
 import Login from './components/profile/login/Login'
 import Signup from './components/profile/signup/Signup'
 import SingleStory from './components/story/singleStory/SingleStory'
+import EditStory from './components/story/editStory/EditStory'
 
 
 function App() {
@@ -73,6 +74,11 @@ function App() {
                                 setIsLoggedIn={setIsLoggedIn} 
                                 setUserProfile={setUserData}/>}
           />
+          <Route 
+              path='/edit-story/:_id'
+              render={() => <EditStory userData={userData}/>}
+          />
+
           <Route component={Error} />
         </Switch>
     </div>

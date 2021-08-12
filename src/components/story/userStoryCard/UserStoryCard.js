@@ -32,6 +32,7 @@ const UserStoryCard = ({data, handleSeeStory}) => {
             </div>
             <div id="user-delete-btn-container">
                 <Link className='submit-btn' to={`/read-story/`+_id}>Read full story</Link>
+                <Link className='submit-btn' to={`/edit-story/`+_id}>Edit story</Link>
                 <button type="submit" className='submit-btn' onClick={() => handleStoryDelete(_id)}>Delete</button>
             </div>
         </div>
