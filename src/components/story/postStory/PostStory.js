@@ -39,7 +39,6 @@ const PostStory = ({isLoggedIn}) => {
 
                 return response.json()
             })
-
             setstory({
                 title: '',
                 story: '',
