@@ -43,9 +43,7 @@ function App() {
             render={() => <StoryContainer userData={userData}/>}
             exact/>    
           <Route path='/story' 
-            component={PostStory}
-            setIsLoggedIn={setIsLoggedIn} 
-            isLoggedIn={isLoggedIn}
+            render={() => <PostStory userData={userData}/>}
           />
 
           <Route path='/read-story' render={() => <SingleStory 

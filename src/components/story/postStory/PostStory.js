@@ -2,8 +2,10 @@ import React, {useState} from 'react'
 import Loading from '../../other/loading/Loading'
 import Error from '../../other/error/Error'
 import './postStory.css'
+import NotLoggedIn from '../../other/notLoggedIn/NotLoggedIn'
 
-const PostStory = ({isLoggedIn}) => {
+const PostStory = ({userData}) => {
+
     const [story, setstory] = useState({
         title: ``,
         story: ``,
@@ -48,47 +50,54 @@ const PostStory = ({isLoggedIn}) => {
     }
 
     return (<>
-                <form onSubmit={handleSubmit}>
-                <div className='storyForm'>
-                    <h1>Story's details</h1>
-                    <br />
-
-                    <label>Story Title<span>*</span><br /> 
-                        <textarea 
-                            className='title' 
-                            required 
-                            name="title" 
-                            value={story.title} 
-                            onChange={e => setstory({...story, title: e.target.value})}
-                            
-                        ></textarea>
-                    </label><br />
-                    <label>Category<span>*</span><br />
-                        <textarea
-                            className='title'
-                            name="category"
-                            required
-                            value={story.category}
-                            onChange={e => setstory({...story, category: e.target.value})}
-                         ></textarea><br />
-                    </label>
-
-                    <label>Story<span>*</span><br />
-                        <textarea 
-                            className='story' 
-                            required 
-                            name="story" 
-                            value={story.story} 
-                            onChange={e => setstory({...story, story: e.target.value})}
-                            placeholder="Enter story"
-                            minLength={500}
-                        ></textarea>
-                    </label><br />
+                {(Object.keys(userData).length === 0) ? 
+                <div className='profile-container'>
+                    <NotLoggedIn /> 
                 </div>
+                :
 
-                <button type="submit" className='submit-btn'>Submit</button>
-                {isStoryPosted.length > 0 && <Error text={isStoryPosted} />}
-            </form>
+                    <form onSubmit={handleSubmit}>
+                    <div className='storyForm'>
+                        <h1>Story's details</h1>
+                        <br />
+
+                        <label>Story Title<span>*</span><br /> 
+                            <textarea 
+                                className='title' 
+                                required 
+                                name="title" 
+                                value={story.title} 
+                                onChange={e => setstory({...story, title: e.target.value})}
+                                
+                            ></textarea>
+                        </label><br />
+                        <label>Category<span>*</span><br />
+                            <textarea
+                                className='title'
+                                name="category"
+                                required
+                                value={story.category}
+                                onChange={e => setstory({...story, category: e.target.value})}
+                            ></textarea><br />
+                        </label>
+
+                        <label>Story<span>*</span><br />
+                            <textarea 
+                                className='story' 
+                                required 
+                                name="story" 
+                                value={story.story} 
+                                onChange={e => setstory({...story, story: e.target.value})}
+                                placeholder="Enter story"
+                                minLength={500}
+                            ></textarea>
+                        </label><br />
+                    </div>
+
+                    <button type="submit" className='submit-btn'>Submit</button>
+                    {isStoryPosted.length > 0 && <Error text={isStoryPosted} />}
+                </form>
+                }
 
                 {loading && <Loading />}
             </>
