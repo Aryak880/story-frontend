@@ -55,13 +55,14 @@
 
 .single-story-comment-story-container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .comment-container{
-    flex: 1;
+    /* flex: 1; */
+    width: 80%;
     background: rgba(255, 255, 255, 0.27);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
@@ -69,7 +70,7 @@
     margin: 0 1rem;
     border-radius: 1rem;
     margin-top: 1.5rem;
-    min-height: 75vh;
+    /* min-height: 75vh; */
     font-size: 1.8rem;
 }
 
@@ -78,6 +79,7 @@
     .single-story-comment-story-container{
         flex-direction: column;
     }
+
     .comment-container{
         /* flex: 1; */
         min-height: auto;
