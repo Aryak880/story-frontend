@@ -31,6 +31,13 @@ body {
   background-position: center;
 }
 
+hr{
+  width: 100%;
+  height: 2px;
+  background: white;
+  border-radius: 1rem;
+}
+
 h1 {
   font-family: 'Mate SC', serif;
   font-size: 4rem;
@@ -110,4 +117,53 @@ nav .nav-link {
 
 ::-webkit-scrollbar-track {
   background: transparent;
+}
+
+/* Button styles */
+.btn{
+  padding: 0.5rem;
+  font-size: 1.6rem;
+  outline: none;
+  border-radius: 5px;
+  margin: 0.5rem;
+  font-family: 'Mate SC', serif;
+  cursor: pointer;
+  /* transition-duration: 0.4s; */
+  text-decoration: none;
+}
+
+/* RED */
+.danger-btn{
+  background: white;
+  color: #f44336;
+  border: 2px solid #f44336;
+}
+
+.danger-btn:active{
+  background: #f44336;
+  color: #ffffff;
+}
+
+/* GREEN */
+.green-btn{
+  background: white;
+  color: #4CAF50;
+  border: 2px solid #4CAF50;
+}
+
+.green-btn:active{
+  background: #4CAF50;
+  color: white;
+}
+
+/* BLUE */ 
+.blue-btn{
+  background: white;
+  color: #008CBA;
+  border: 2px solid #008CBA;
+}
+
+.blue-btn:active{
+  background: #008CBA;
+  color: white;
 }

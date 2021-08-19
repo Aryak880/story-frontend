@@ -46,9 +46,8 @@ const SingleStory = ({userData}) => {
                 <div className='single-story-comment-story-container'>
                     <div className='story-writer-container'>
 
-                        {/* test */}
                         {
-                            (Object.keys(userData).length !== 0 && userData._id === storyOwner._id) && <Link className='submit-btn edit-story-singleStory-page' to={`/edit-story/`+_id}>Edit story</Link>
+                            (Object.keys(userData).length !== 0 && userData._id === storyOwner._id) && <Link className='btn green-btn edit-story-singleStory-page' to={`/edit-story/`+_id}>Edit story</Link>
                         }
 
                         <div className="storyDetailsContainer">

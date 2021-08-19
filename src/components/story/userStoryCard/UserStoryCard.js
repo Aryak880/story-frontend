@@ -9,17 +9,19 @@ const UserStoryCard = ({data, handleSeeStory}) => {
 
 
     const handleStoryDelete = async (id) => {
-        fetch('https://protected-mesa-93618.herokuapp.com/me/story/'+id, {
-            method: "DELETE",
-            headers: {
-                'Authorization': `Bearer ${sessionStorage.getItem('aryak-story-app-userToken')}`,
-                "Content-type": "application/json; charset=UTF-8"
-            }
+        if(window.confirm("Do you really want to delete story?")){
+            fetch('https://protected-mesa-93618.herokuapp.com/me/story/'+id, {
+                method: "DELETE",
+                headers: {
+                    'Authorization': `Bearer ${sessionStorage.getItem('aryak-story-app-userToken')}`,
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+                })
+                .then(response => { 
+                    handleSeeStory()
+                    return response.json()
             })
-            .then(response => { 
-                handleSeeStory()
-                return response.json()
-            })
+        }
     }
 
     var {story, title, _id} = data
@@ -31,9 +33,9 @@ const UserStoryCard = ({data, handleSeeStory}) => {
                 <p>{story}</p>
             </div>
             <div id="user-delete-btn-container">
-                <Link className='submit-btn' to={`/read-story/`+_id}>Read full story</Link>
-                <Link className='submit-btn' to={`/edit-story/`+_id}>Edit story</Link>
-                <button type="submit" className='submit-btn' onClick={() => handleStoryDelete(_id)}>Delete</button>
+                <Link className='btn blue-btn' to={`/read-story/`+_id}>Read full story</Link>
+                <Link className='btn green-btn' to={`/edit-story/`+_id}>Edit story</Link>
+                <button type="submit" className='btn danger-btn' onClick={() => handleStoryDelete(_id)}>Delete</button>
             </div>
         </div>
     )

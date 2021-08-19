@@ -1,7 +1,9 @@
+import {Link} from 'react-router-dom'
 import React, {useState} from 'react'
 import NotLoggedIn from '../other/notLoggedIn/NotLoggedIn'
 import UserStoryCard from '../story/userStoryCard/UserStoryCard'
 import Loading from '../other/loading/Loading'
+
 import './profile.css'
 
 const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
@@ -11,20 +13,22 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
     
 
     const handleLogOut = async () => {
-        fetch('https://protected-mesa-93618.herokuapp.com/user/logout', {
-            method: "POST",
-            body: JSON.stringify({token: sessionStorage.getItem("aryak-story-app-userToken")}),
-            headers: {
-                'Authorization': `Bearer ${sessionStorage.getItem('aryak-story-app-userToken')}`,
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        }).then(response => {
-            if(response.status !== 500){
-                sessionStorage.removeItem("aryak-story-app-userToken")
-                sessionStorage.removeItem('aryak-story-app-userData')
-                setIsLoggedIn(false)
-            }
-        })
+        if(window.confirm("Are you sure to LOG OUT!")){
+            fetch('https://protected-mesa-93618.herokuapp.com/user/logoutAll', {
+                method: "POST",
+                body: JSON.stringify({token: sessionStorage.getItem("aryak-story-app-userToken")}),
+                headers: {
+                    'Authorization': `Bearer ${sessionStorage.getItem('aryak-story-app-userToken')}`,
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            }).then(response => {
+                if(response.status !== 500){
+                    sessionStorage.removeItem("aryak-story-app-userToken")
+                    sessionStorage.removeItem('aryak-story-app-userData')
+                    setIsLoggedIn(false)
+                }
+            })
+        }
     }
 
     const handleSeeStory = async () => {
@@ -70,9 +74,15 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
                 <label>Facebook: {userData.facebook}</label><br />
                 <label>Instagram: {userData.instagram}</label><br />
                 <label>Gender: {userData.gender}</label><br />
-                <button onClick={handleLogOut} className='submit-btn'>Log out</button>
-                <button onClick={handleDeleteProfile} className='submit-btn'>DELETE Account!</button>
-                <button onClick={handleSeeStory} className='submit-btn'>See all your story</button>
+                <div>
+                    <button onClick={handleSeeStory} className='btn blue-btn'>See all your story</button>
+                    <Link className='btn green-btn' to={`/profile-edit/`}>Edit Profile</Link>
+                </div>
+                <hr />
+                <div>
+                    <button onClick={handleLogOut} className='btn danger-btn'>Log out</button>
+                    <button onClick={handleDeleteProfile} className='btn danger-btn'>DELETE Account!</button>
+                </div>
             </div>
     else {
         com = <NotLoggedIn />
