@@ -117,7 +117,7 @@ const EditStory = ({userData}) => {
                                 </label><br />
                             </div>
                 
-                                <button type="submit" className='submit-btn'>Update!</button>
+                                <button type="submit" className='btn black-btn'>Update!</button>
                                 
                         </form>
                     </div>

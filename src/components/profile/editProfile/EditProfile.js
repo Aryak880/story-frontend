@@ -150,7 +150,7 @@ const EditProfile = ({userData, setUserProfile}) => {
                                 onChange={handleChange}
                             />
                             
-                            <button type="submit" className="btn blue-btn">Update</button>
+                            <button type="submit" className="btn black-btn">Update</button>
                         
                         </form>
                         {loading && <Loading />}

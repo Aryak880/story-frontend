@@ -67,21 +67,26 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
 
     var com
     if(isLoggedIn)
-        com = <div className="profile LogInSignUp">        
+        com = <div className="profile LogInSignUp">
+
+                <div>
+                    <Link to='/story' className='btn black-btn'>Post Story</Link>
+                    <button onClick={handleSeeStory} className='btn blue-btn'>See all your story &#128083;</button>
+                </div>
+
+                <hr />
+                <br />
                 <label>Name: {userData.name}</label><br />
                 <label>Age: {userData.age}</label><br />
                 <label>Email: {userData.email}</label><br />
                 <label>Facebook: {userData.facebook}</label><br />
                 <label>Instagram: {userData.instagram}</label><br />
-                <label>Gender: {userData.gender}</label><br />
-                <div>
-                    <button onClick={handleSeeStory} className='btn blue-btn'>See all your story</button>
-                    <Link className='btn green-btn' to={`/profile-edit/`}>Edit Profile</Link>
-                </div>
+                <label>Gender: {userData.gender}</label> <br />
                 <hr />
                 <div>
-                    <button onClick={handleLogOut} className='btn danger-btn'>Log out</button>
-                    <button onClick={handleDeleteProfile} className='btn danger-btn'>DELETE Account!</button>
+                    <Link className='btn green-btn' to={`/profile-edit/`}>Edit Profile</Link>
+                    <button onClick={handleLogOut} className='btn danger-btn'>Log out &#10071;</button>
+                    <button onClick={handleDeleteProfile} className='btn danger-btn'>DELETE Account &#10062;</button>
                 </div>
             </div>
     else {

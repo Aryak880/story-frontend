@@ -130,6 +130,7 @@ nav .nav-link {
   cursor: pointer;
   /* transition-duration: 0.4s; */
   text-decoration: none;
+  font-weight: 600;
 }
 
 /* RED */
@@ -165,5 +166,18 @@ nav .nav-link {
 
 .blue-btn:active{
   background: #008CBA;
+  color: white;
+}
+
+/* BLACK */
+
+.black-btn{
+  background-color: #e7e7e7; 
+  color: black;
+  border: 2px solid #000;
+}
+
+.black-btn:active{
+  background-color: #555555;; 
   color: white;
 }
