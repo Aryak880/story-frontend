@@ -1,8 +1,4 @@
 footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   width: 100%;
   margin: 0 auto;
   font-size: 1.6rem;
@@ -14,6 +10,10 @@ footer {
   background: rgba(63, 209, 94, 0.2);
   font-family: 'Inconsolata', monospace;
   margin-top: 1.5rem;
+}
+
+.footer div:nth-child(2){
+  margin: 0.5rem;
 }
 
 footer .footerName {

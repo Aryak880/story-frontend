@@ -181,3 +181,50 @@ nav .nav-link {
   background-color: #555555;; 
   color: white;
 }
+
+/* Glassmorphism effect */
+.glassmorphism-white{
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.glassmorphism-black{
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* FLEX */
+.flex-column-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-row-center{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Submit button */
+.submit-btn {
+  background: linear-gradient(-90deg, cornflowerblue, rgb(210, 105, 139));
+  color: #f1f1f1;
+  padding: 0.5rem;
+  font-size: 1.8rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.submit-btn:active {
+  /* color: black; */
+  background: linear-gradient(90deg, cornflowerblue, rgb(210, 105, 139));
+}

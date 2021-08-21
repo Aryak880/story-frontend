@@ -3,7 +3,7 @@ import './comment.css'
 
 const CommentCard = ({name, comment}) => {
     return(
-        <div className='comment-card-container'>
+        <div className='comment-card-container glassmorphism-white'>
             <h4>{name}</h4>
             <p>{comment}</p>
         </div>

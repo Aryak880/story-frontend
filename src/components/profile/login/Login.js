@@ -68,8 +68,8 @@ const Login = ({
     }
 
     return (
-        <div className='loginContainer profile-container'>
-            <div className='login'>
+        <div className='loginContainer profile-container flex-column-center glassmorphism-white'>
+            <div className='login flex-column-center glassmorphism-white'>
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit}>
                     <input 

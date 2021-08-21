@@ -51,12 +51,12 @@ const PostStory = ({userData}) => {
 
     return (<>
                 {(Object.keys(userData).length === 0) ? 
-                <div className='profile-container'>
+                <div className='profile-container flex-column-center glassmorphism-white'>
                     <NotLoggedIn /> 
                 </div>
                 :
 
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className='flex-column-center glassmorphism-white'>
                     <div className='storyForm'>
                         <h1>Story's details</h1>
                         <br />

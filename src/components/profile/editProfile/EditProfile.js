@@ -89,9 +89,9 @@ const EditProfile = ({userData, setUserProfile}) => {
                     </div>
                     :
 
-                    <div className='signUpContainer profile-container'>
+                    <div className='signUpContainer profile-container flex-column-center glassmorphism-white'>
                         {error && <Error text="Profile not update, please try again!"/>}
-                    <div className="signup">
+                    <div className="signup flex-column-center glassmorphism-white">
                         
 
                         <h2>Update Profile</h2>

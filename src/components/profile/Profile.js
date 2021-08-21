@@ -67,7 +67,7 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
 
     var com
     if(isLoggedIn)
-        com = <div className="profile LogInSignUp">
+        com = <div className="profile LogInSignUp flex-column-center glassmorphism-black">
 
                 <div>
                     <Link to='/story' className='btn black-btn'>Post Story</Link>
@@ -94,7 +94,7 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
     }
 
     return (
-        <div className='loginContainer profile-container'>
+        <div className='loginContainer profile-container flex-column-center glassmorphism-white'>
             {
                 com
             }

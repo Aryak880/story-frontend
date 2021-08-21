@@ -1,0 +1,14 @@
+.feedback-container{
+    min-height: 75vh;
+    margin: 1rem 1rem 0 1rem;
+    padding: 1rem;
+}
+
+.feedback p{
+    font-size: 1.8rem;
+}
+
+.feedback textarea{
+    height: 20vh;
+    width: 80%;
+}

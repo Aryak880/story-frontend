@@ -51,7 +51,7 @@ const SingleStory = ({userData}) => {
 
     return (<div className='single-story-main-container'>
     {    !storyFound ? 
-            <div className='profile-container'>
+            <div className='profile-container flex-column-center glassmorphism-white'>
                 <h1 style={{textAlign: "center"}}>Sorry Story not found! may be writter have deleted it. &#128529;</h1>
                 <button className='btn green-btn' onClick={() => history.push('/')}>Read other story &#9749;</button>
             </div> :
