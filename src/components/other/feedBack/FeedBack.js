@@ -43,7 +43,7 @@ const FeedBack = () => {
                 <h1>Feedback Form</h1>
                 <p>Please fill it decently</p>
 
-                <form onSubmit={handleSubmit} name="feedback" data-netlify="true" data-netlify-recaptcha="true">
+                <form onSubmit={handleSubmit} name="feedback" netlify data-netlify-recaptcha="true">
 
                     <input type='text' name='name' value={data.name} onChange={handleChange} placeholder="Full Name"/>
                     <input type='text' name='email' value={data.email} onChange={handleChange} placeholder="Email id"/>
