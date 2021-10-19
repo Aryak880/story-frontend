@@ -24,17 +24,17 @@ const FeedBack = () => {
         })
     }
 
-    const handleSubmit = e => {
-            fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: encode({ "form-name": "feedback", ...data })
-            })
-            .then(() => alert("Success!"))
-            .catch(error => alert(error));
+    // const handleSubmit = e => {
+    //         fetch("/", {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    //         body: encode({ "form-name": "feedback", ...data })
+    //         })
+    //         .then(() => alert("Success!"))
+    //         .catch(error => alert(error));
     
-            e.preventDefault();
-        };
+    //         e.preventDefault();
+    // };
 
 
     return (
@@ -43,12 +43,7 @@ const FeedBack = () => {
                 <h1>Feedback Form</h1>
                 <p>Please fill it decently</p>
 
-                <form onSubmit={handleSubmit} name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true">
-
-                    <p class="hidden">
-                        <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
-                    </p>
-
+                <form name="contact" netlify>
                     <input type='text' name='name' value={data.name} onChange={handleChange} placeholder="Full Name"/>
                     <input type='text' name='email' value={data.email} onChange={handleChange} placeholder="Email id"/>
                     <input type='text' name='subject' value={data.subject} onChange={handleChange} placeholder="Subject"/>
