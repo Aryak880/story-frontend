@@ -31,7 +31,7 @@ const PostStory = ({userData}) => {
                 "Content-type": "application/json; charset=UTF-8"
             }
             })
-            .then(response => { 
+            .then(response => {
                 setLoading(false)
                 if(response.status === 201){
                     setIsStoryPosted("Your Story is posted go and check in read story tab")
