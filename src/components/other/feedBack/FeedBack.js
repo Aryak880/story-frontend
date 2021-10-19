@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+// import React, {useState} from 'react'
+import React from 'react'
 import './feedback.css'
 
 // const encode = (data) => {
@@ -10,19 +11,19 @@ import './feedback.css'
 
 const FeedBack = () => {
 
-    const [data, setData] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-    })
+    // const [data, setData] = useState({
+    //     name: '',
+    //     email: '',
+    //     subject: '',
+    //     message: ''
+    // })
 
-    const handleChange = (e) => {
-        setData({
-            ...data,
-            [e.target.name]: e.target.value
-        })
-    }
+    // const handleChange = (e) => {
+    //     setData({
+    //         ...data,
+    //         [e.target.name]: e.target.value
+    //     })
+    // }
 
     // const handleSubmit = e => {
     //         fetch("/", {
@@ -43,13 +44,36 @@ const FeedBack = () => {
                 <h1>Feedback Form</h1>
                 <p>Please fill it decently</p>
 
-                <form name="contact" netlify>
+                {/* <form name="contact" netlify>
                     <input type='text' name='name' value={data.name} onChange={handleChange} placeholder="Full Name"/>
                     <input type='text' name='email' value={data.email} onChange={handleChange} placeholder="Email id"/>
                     <input type='text' name='subject' value={data.subject} onChange={handleChange} placeholder="Subject"/>
                     <textarea name='message' placeholder='Message' value={data.message} onChange={handleChange} />
                     <button className='btn blue-btn' type='submit'>Send</button>
+                </form> */}
+
+                <form name="contact" method="POST" data-netlify="true">
+                    <p>
+                        <label>Your Name: <input type="text" name="name" /></label>   
+                    </p>
+                    <p>
+                        <label>Your Email: <input type="email" name="email" /></label>
+                    </p>
+                    <p>
+                        <label>Your Role: <select name="role[]" multiple>
+                        <option value="leader">Leader</option>
+                        <option value="follower">Follower</option>
+                        </select></label>
+                    </p>
+                    <p>
+                        <label>Message: <textarea name="message"></textarea></label>
+                    </p>
+                    <p>
+                        <button type="submit">Send</button>
+                    </p>
                 </form>
+
+
             </div>
         </div>
     )
