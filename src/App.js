@@ -8,7 +8,6 @@ import Signup from './components/profile/signup/Signup'
 import SingleStory from './components/story/singleStory/SingleStory'
 import EditStory from './components/story/editStory/EditStory'
 import EditProfile from './components/profile/editProfile/EditProfile'
-import FeedBack from './components/other/feedBack/FeedBack'
 
 
 function App() {
@@ -86,13 +85,7 @@ function App() {
           <Route 
               path='/edit-story/:_id'
               render={() => <EditStory userData={userData}/>}
-          />
-
-          <Route
-              path='/feedback'
-              component={FeedBack}
-          />
-          
+          />       
 
           <Route component={Error} />
         </Switch>
