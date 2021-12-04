@@ -50,7 +50,7 @@ const EditStory = ({userData}) => {
             method: "PATCH",
             body: JSON.stringify({ title: story.title, story: story.story, category: story.category }),
             headers: {
-                'Authorization': `Bearer ${sessionStorage.getItem('aryak-story-app-userToken')}`,
+                'Authorization': `Bearer ${localStorage.getItem('aryak-story-app-userToken')}`,
                 "Content-type": "application/json; charset=UTF-8"
             }
             })

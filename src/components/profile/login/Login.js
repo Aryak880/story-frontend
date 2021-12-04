@@ -57,8 +57,8 @@ const Login = ({
             
             else{
                 // console.log(data.user)
-                sessionStorage.setItem('aryak-story-app-userToken', data.token)
-                sessionStorage.setItem('aryak-story-app-userData', JSON.stringify(data.user))                
+                localStorage.setItem('aryak-story-app-userToken', data.token)
+                localStorage.setItem('aryak-story-app-userData', JSON.stringify(data.user))                
                 setIsLoggedIn(true)
                 setUserFound(true)
                 setUserProfile(data.user)

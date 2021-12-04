@@ -11,13 +11,12 @@ import EditProfile from './components/profile/editProfile/EditProfile'
 
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [userData, setUserData] = useState(sessionStorage.getItem('aryak-story-app-userData') !== null ? JSON.parse(sessionStorage.getItem('aryak-story-app-userData')) : {})
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('aryak-story-app-userData') !== null ? true : false)
+  const [userData, setUserData] = useState(localStorage.getItem('aryak-story-app-userData') !== null ? JSON.parse(localStorage.getItem('aryak-story-app-userData')) : {})
 
-  window.onunload = function () {
-    sessionStorage.clear();
-  }
-
+  // window.onunload = function () {
+  //   localStorage.clear();
+  // }
 
   return (
     <div className="App">

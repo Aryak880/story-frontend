@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom'
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import NotLoggedIn from '../other/notLoggedIn/NotLoggedIn'
 import UserStoryCard from '../story/userStoryCard/UserStoryCard'
 import Loading from '../other/loading/Loading'
@@ -7,7 +7,7 @@ import Loading from '../other/loading/Loading'
 import './profile.css'
 
 const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
-
+    const myRef = useRef(null)
     const [stories, setStories] = useState([])
     const [loading, setLoading] = useState(false)
     
@@ -16,15 +16,15 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
         if(window.confirm("Are you sure to LOG OUT!")){
             fetch('https://protected-mesa-93618.herokuapp.com/user/logoutAll', {
                 method: "POST",
-                body: JSON.stringify({token: sessionStorage.getItem("aryak-story-app-userToken")}),
+                body: JSON.stringify({token: localStorage.getItem("aryak-story-app-userToken")}),
                 headers: {
-                    'Authorization': `Bearer ${sessionStorage.getItem('aryak-story-app-userToken')}`,
+                    'Authorization': `Bearer ${localStorage.getItem('aryak-story-app-userToken')}`,
                     "Content-type": "application/json; charset=UTF-8"
                 }
             }).then(response => {
                 if(response.status !== 500){
-                    sessionStorage.removeItem("aryak-story-app-userToken")
-                    sessionStorage.removeItem('aryak-story-app-userData')
+                    localStorage.removeItem("aryak-story-app-userToken")
+                    localStorage.removeItem('aryak-story-app-userData')
                     setIsLoggedIn(false)
                 }
             })
@@ -36,7 +36,7 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
         fetch('https://protected-mesa-93618.herokuapp.com/me/stories', {
             method: "GET",
             headers: new Headers({
-                'Authorization': 'Bearer '+sessionStorage.getItem("aryak-story-app-userToken"), 
+                'Authorization': 'Bearer '+localStorage.getItem("aryak-story-app-userToken"), 
                 "Content-type": "application/json; charset=UTF-8"
               }),
         }).then(response => {
@@ -44,6 +44,9 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
         }).then(data => {
             setStories(data)
             setLoading(false)
+
+            const executeScroll = () => myRef.current.scrollIntoView()
+            executeScroll()            
         })
     }
 
@@ -52,14 +55,14 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
             fetch('https://protected-mesa-93618.herokuapp.com/user/me', {
             method: "DELETE",
             headers: new Headers({
-                'Authorization': 'Bearer '+sessionStorage.getItem("aryak-story-app-userToken"), 
+                'Authorization': 'Bearer '+localStorage.getItem("aryak-story-app-userToken"), 
                 "Content-type": "application/json; charset=UTF-8"
               }),
             }).then(response => {
                 return response.json()
             }).then(data => {
-                sessionStorage.removeItem("aryak-story-app-userToken")
-                sessionStorage.removeItem('aryak-story-app-userData')
+                localStorage.removeItem("aryak-story-app-userToken")
+                localStorage.removeItem('aryak-story-app-userData')
                 setIsLoggedIn(false)
             })
         }
@@ -99,7 +102,7 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
                 com
             }
             
-            <div className='userStoryContainer'>
+            <div className='userStoryContainer' ref={myRef}>
 
                 {
                     isLoggedIn && stories.map(x => <UserStoryCard key={x._id} data={x} handleSeeStory={handleSeeStory}/>)

@@ -18,6 +18,7 @@ const EditProfile = ({userData, setUserProfile}) => {
         age: userData.age,
         instagram: userData.instagram,
         facebook: userData.facebook,
+        password: ''
     })
 
 
@@ -45,7 +46,7 @@ const EditProfile = ({userData, setUserProfile}) => {
                 facebook: user.facebook,
              }),
             headers: {
-                'Authorization': `Bearer ${sessionStorage.getItem('aryak-story-app-userToken')}`,
+                'Authorization': `Bearer ${localStorage.getItem('aryak-story-app-userToken')}`,
                 "Content-type": "application/json; charset=UTF-8"
             }
             })
@@ -66,7 +67,7 @@ const EditProfile = ({userData, setUserProfile}) => {
                 }
                 
                 else{
-                    sessionStorage.setItem('aryak-story-app-userData', JSON.stringify(data))                    
+                    localStorage.setItem('aryak-story-app-userData', JSON.stringify(data))                    
                     setUserProfile(data)
                     history.goBack()
                 }

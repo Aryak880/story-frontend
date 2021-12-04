@@ -13,7 +13,7 @@ const UserStoryCard = ({data, handleSeeStory}) => {
             fetch('https://protected-mesa-93618.herokuapp.com/me/story/'+id, {
                 method: "DELETE",
                 headers: {
-                    'Authorization': `Bearer ${sessionStorage.getItem('aryak-story-app-userToken')}`,
+                    'Authorization': `Bearer ${localStorage.getItem('aryak-story-app-userToken')}`,
                     "Content-type": "application/json; charset=UTF-8"
                 }
                 })
