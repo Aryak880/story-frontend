@@ -3,6 +3,7 @@ import React, {useState, useRef} from 'react'
 import NotLoggedIn from '../other/notLoggedIn/NotLoggedIn'
 import UserStoryCard from '../story/userStoryCard/UserStoryCard'
 import Loading from '../other/loading/Loading'
+// import Admin from '../admin/Admin'
 
 import './profile.css'
 
@@ -90,6 +91,7 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
                 <hr />
                 <div>
                     <Link className='btn green-btn' to={`/profile-edit/`}>Edit Profile</Link>
+                    {userData.isAdmin && <Link className='btn green-btn' to={`/admin`}>Go to Admin pannel</Link>}
                     <button onClick={handleLogOut} className='btn danger-btn'>Log out &#10071;</button>
                     <button onClick={handleDeleteProfile} className='btn danger-btn'>DELETE Account &#10062;</button>
                 </div>
