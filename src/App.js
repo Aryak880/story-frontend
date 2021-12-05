@@ -9,6 +9,7 @@ import SingleStory from './components/story/singleStory/SingleStory'
 import EditStory from './components/story/editStory/EditStory'
 import EditProfile from './components/profile/editProfile/EditProfile'
 import EditPassword from './components/profile/editProfile/EditPassword'
+import Admin from './components/admin/Admin';
 import User from '../src/images/user.png'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   // window.onunload = function () {
   //   localStorage.clear();
   // }
+  // console.log(userData)
 
   return (
     <div className="App">
@@ -96,7 +98,16 @@ function App() {
           <Route 
               path='/edit-story/:_id'
               render={() => <EditStory userData={userData}/>}
-          />       
+          />
+
+          {userData.isAdmin &&
+            <Route 
+              path='/admin'
+              render={() => <Admin 
+                                isLoggedIn={isLoggedIn}
+                            />}
+            />
+          }
 
           <Route component={Error} />
         </Switch>

@@ -123,7 +123,6 @@ const EditPassword = () => {
                         {loading && <Loading />}
                     </div>
                 </div>
-
     )
 }
 

@@ -217,6 +217,7 @@ nav .nav-link {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .flex-row-center{
@@ -224,6 +225,7 @@ nav .nav-link {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 /* Submit button */
