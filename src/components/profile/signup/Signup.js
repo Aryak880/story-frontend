@@ -29,6 +29,16 @@ const Signup = ({ setUserProfile, setIsLoggedIn }) => {
         })
     }
 
+    const handleShowPassword = () => {
+        // login-password-input
+        var x = document.getElementById("show-password-signup");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         setLoading(true)
@@ -135,6 +145,7 @@ const Signup = ({ setUserProfile, setIsLoggedIn }) => {
                     <input
                         type="password"
                         placeholder="password"
+                        id="show-password-signup"
                         name="password"
                         required
                         value={user.password}
@@ -144,16 +155,28 @@ const Signup = ({ setUserProfile, setIsLoggedIn }) => {
                     <input
                         type="password"
                         placeholder="re-enter password"
+                        // className="show-password-signup"
                         name="matchPassword"
                         value={passwordNotMatch}
                         required
                         onChange={handleRePassword}
                     />
+
+                    <div className='show-password-container'>
+                        <input 
+                            type="checkbox"
+                            onClick={handleShowPassword}
+                        />Show Password
+                    </div>
+
                     {
                         ((passwordNotMatch !== user.password) && (passwordNotMatch.length !== 0) && (user.password.length !== 0)) && <span className='passwordNotMatch error-message'>
                             *password not match
                             </span>
                     }
+
+
+
                     <button type="submit" className="submit-btn" disabled={passwordNotMatch !== user.password}>Submit</button>
 
                     <br />

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {useHistory} from 'react-router-dom'
+import {useHistory, Link} from 'react-router-dom'
 import Loading from '../../other/loading/Loading'
 import Error from '../../other/error/Error'
 import NotLoggedIn from '../../other/notLoggedIn/NotLoggedIn'
@@ -28,6 +28,10 @@ const EditProfile = ({userData, setUserProfile}) => {
             [e.target.name]: e.target.value
         })
     }
+
+    // const handleShowPassword = () => {
+    //     console.log('hello')
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -93,9 +97,11 @@ const EditProfile = ({userData, setUserProfile}) => {
                     <div className='signUpContainer profile-container flex-column-center glassmorphism-white'>
                         {error && <Error text="Profile not update, please try again!"/>}
                     <div className="signup flex-column-center glassmorphism-white">
-                        
-
-                        <h2>Update Profile</h2>
+                            <h2>Update Profile</h2>
+                            <div>
+                                <Link to='/profile-edit-password' className='btn danger-btn'>Change Password</Link>
+                                {/* <button className='btn green-btn' onClick={handleShowPassword}>Show Password</button> */}
+                            </div>
                         <form onSubmit={handleSubmit}>
                             <input
                                 type="text"

@@ -12,3 +12,10 @@
 .login p {
   font-size: 1.6rem;
 }
+
+.show-password-container{
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  
+}

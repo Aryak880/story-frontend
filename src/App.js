@@ -8,6 +8,7 @@ import Signup from './components/profile/signup/Signup'
 import SingleStory from './components/story/singleStory/SingleStory'
 import EditStory from './components/story/editStory/EditStory'
 import EditProfile from './components/profile/editProfile/EditProfile'
+import EditPassword from './components/profile/editProfile/EditPassword'
 
 
 function App() {
@@ -21,21 +22,21 @@ function App() {
   return (
     <div className="App">
       <nav className='navBar'>
-        <Link to="/" className='nav-link'>Read Stories</Link>
+        <Link to="/" className='nav-link default-link-color'>Read Stories</Link>
         <div className='nav-profile' style={Object.keys(userData).length === 0 ? {borderRight: "none "} : {}}>
-          <Link to='/profile'><img src="https://img.icons8.com/ios-glyphs/30/000000/test-account.png" alt="profile"/></Link>
+          <Link to='/profile' className='default-link-color'><img src="https://img.icons8.com/ios-glyphs/30/000000/test-account.png" alt="profile"/></Link>
 
             <div className='login-signup'>
                 {
-                  isLoggedIn ? <Link to="/profile">Profile</Link>  : <>
-                    <Link to='/profile/login'>Log in</Link> &nbsp;
-                    <Link to='/profile/signup'>Sign Up</Link>
+                  isLoggedIn ? <Link to="/profile" className='default-link-color'>Profile</Link>  : <>
+                    <Link to='/profile/login' className='default-link-color'>Log in</Link> &nbsp;
+                    <Link to='/profile/signup' className='default-link-color'>Sign Up</Link>
                   </>
                 }
             </div>
         </div>
         
-        {isLoggedIn && <Link to="/story" className='nav-link'>Post Story</Link>}
+        {isLoggedIn && <Link to="/story" className='nav-link default-link-color'>Post Story</Link>}
       </nav>
 
        <Switch>
@@ -75,6 +76,17 @@ function App() {
                                 setUserProfile={setUserData} 
                                 isLoggedIn={isLoggedIn}/>}
           />
+          
+          <Route
+            path="/profile-edit-password"
+            render={() => <EditPassword
+                              setIsLoggedIn={setIsLoggedIn}
+                              userData={userData}
+                              setUserProfile={setUserData}
+                              isLoggedIn={isLoggedIn}/>
+                            }
+          />
+
           <Route 
               path='/profile/login' 
               render={() => <Login 

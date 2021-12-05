@@ -17,12 +17,21 @@ const Login = ({
     const [loading, setLoading] = useState(false)
     const [userFound, setUserFound] = useState(true)
 
-
     const handleChange = (e) => {
         setLogin({
             ...login,
             [e.target.name] : e.target.value
         })
+    }
+
+    const handleShowPassword = () => {
+        // login-password-input
+        var x = document.getElementById("login-password-input");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
     }
 
     const handleSubmit = async (e) => {
@@ -81,11 +90,18 @@ const Login = ({
                     />                    
                     <input 
                         type='password' 
-                        placeholder="password" 
+                        placeholder="password"
+                        id="login-password-input"
                         name="password" 
                         value={login.password}
                         onChange={handleChange}
                     />
+                    <div className='show-password-container'>
+                        <input 
+                            type="checkbox"
+                            onClick={handleShowPassword}
+                        />Show Password
+                    </div>
                     {
                         !true && <span className='error-message login-user-not-found'>User not found! check email and password</span>
                     }
