@@ -33,21 +33,23 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
 
     const handleSeeStory = async () => {
         setLoading(true)
+
         fetch('https://protected-mesa-93618.herokuapp.com/me/stories', {
             method: "GET",
             headers: new Headers({
-                'Authorization': 'Bearer '+localStorage.getItem("aryak-story-app-userToken"), 
+                'Authorization': 'Bearer ' + localStorage.getItem("aryak-story-app-userToken"), 
                 "Content-type": "application/json; charset=UTF-8"
               }),
         }).then(response => {
             return response.json()
         }).then(data => {
             setStories(data)
-            setLoading(false)
+            setLoading(false, localStorage.getItem("aryak-story-app-userToken"))            
 
             const executeScroll = () => myRef.current.scrollIntoView()
             executeScroll()            
         })
+
     }
 
     const handleDeleteProfile = async () => {
@@ -55,7 +57,7 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
             fetch('https://protected-mesa-93618.herokuapp.com/user/me', {
             method: "DELETE",
             headers: new Headers({
-                'Authorization': 'Bearer '+localStorage.getItem("aryak-story-app-userToken"), 
+                'Authorization': 'Bearer ' + localStorage.getItem("aryak-story-app-userToken"), 
                 "Content-type": "application/json; charset=UTF-8"
               }),
             }).then(response => {

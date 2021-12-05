@@ -9,7 +9,7 @@ import SingleStory from './components/story/singleStory/SingleStory'
 import EditStory from './components/story/editStory/EditStory'
 import EditProfile from './components/profile/editProfile/EditProfile'
 import EditPassword from './components/profile/editProfile/EditPassword'
-
+import User from '../src/images/user.png'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('aryak-story-app-userData') !== null ? true : false)
@@ -24,7 +24,7 @@ function App() {
       <nav className='navBar'>
         <Link to="/" className='nav-link default-link-color'>Read Stories</Link>
         <div className='nav-profile' style={Object.keys(userData).length === 0 ? {borderRight: "none "} : {}}>
-          <Link to='/profile' className='default-link-color'><img src="https://img.icons8.com/ios-glyphs/30/000000/test-account.png" alt="profile"/></Link>
+          <Link to='/profile' className='default-link-color'><img src={User} alt="profile" id='user-icon'/></Link>
 
             <div className='login-signup'>
                 {

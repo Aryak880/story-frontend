@@ -92,6 +92,11 @@ nav .nav-link {
   text-align: center;
 }
 
+#user-icon{
+  height: 3rem;
+}
+
+
 @media only screen and (max-width: 450px) {
   nav {
     flex-direction: column;
