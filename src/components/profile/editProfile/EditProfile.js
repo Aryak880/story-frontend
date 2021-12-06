@@ -4,7 +4,7 @@ import Loading from '../../other/loading/Loading'
 import Error from '../../other/error/Error'
 import NotLoggedIn from '../../other/notLoggedIn/NotLoggedIn'
 
-const EditProfile = ({userData, setUserProfile}) => {
+const EditProfile = ({userData, setUserProfile, setIsLoggedIn}) => {
     const history = useHistory()
 
     const [loading, setLoading] = useState(false)
@@ -27,6 +27,24 @@ const EditProfile = ({userData, setUserProfile}) => {
             ...user,
             [e.target.name]: e.target.value
         })
+    }
+
+    const handleDeleteProfile = async () => {
+        if(window.confirm("Do you really want to delete your account!")){
+            fetch('https://protected-mesa-93618.herokuapp.com/user/me', {
+            method: "DELETE",
+            headers: new Headers({
+                'Authorization': 'Bearer ' + localStorage.getItem("aryak-story-app-userToken"), 
+                "Content-type": "application/json; charset=UTF-8"
+              }),
+            }).then(response => {
+                return response.json()
+            }).then(data => {
+                localStorage.removeItem("aryak-story-app-userToken")
+                localStorage.removeItem('aryak-story-app-userData')
+                setIsLoggedIn(false)
+            })
+        }
     }
 
     // const handleShowPassword = () => {
@@ -99,7 +117,8 @@ const EditProfile = ({userData, setUserProfile}) => {
                     <div className="signup flex-column-center glassmorphism-white">
                             <h2>Update Profile</h2>
                             <div>
-                                <Link to='/profile-edit-password' className='btn danger-btn'>Change Password</Link>
+                                <Link to='/profile-edit-password' className='btn green-btn'>Change Password</Link>
+                                <button onClick={handleDeleteProfile} className='btn danger-btn'>DELETE Account &#10062;</button>
                                 {/* <button className='btn green-btn' onClick={handleShowPassword}>Show Password</button> */}
                             </div>
                         <form onSubmit={handleSubmit}>

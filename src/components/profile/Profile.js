@@ -53,23 +53,7 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
 
     }
 
-    const handleDeleteProfile = async () => {
-        if(window.confirm("Do you really want to delete your account!")){
-            fetch('https://protected-mesa-93618.herokuapp.com/user/me', {
-            method: "DELETE",
-            headers: new Headers({
-                'Authorization': 'Bearer ' + localStorage.getItem("aryak-story-app-userToken"), 
-                "Content-type": "application/json; charset=UTF-8"
-              }),
-            }).then(response => {
-                return response.json()
-            }).then(data => {
-                localStorage.removeItem("aryak-story-app-userToken")
-                localStorage.removeItem('aryak-story-app-userData')
-                setIsLoggedIn(false)
-            })
-        }
-    }
+
 
     var com
     if(isLoggedIn)
@@ -93,7 +77,6 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
                     <Link className='btn green-btn' to={`/profile-edit/`}>Edit Profile</Link>
                     {userData.isAdmin && <Link className='btn green-btn' to={`/admin`}>Go to Admin pannel</Link>}
                     <button onClick={handleLogOut} className='btn danger-btn'>Log out &#10071;</button>
-                    <button onClick={handleDeleteProfile} className='btn danger-btn'>DELETE Account &#10062;</button>
                 </div>
             </div>
     else {

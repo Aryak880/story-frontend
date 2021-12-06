@@ -100,14 +100,15 @@ function App() {
               render={() => <EditStory userData={userData}/>}
           />
 
-          {userData.isAdmin &&
+          
             <Route 
               path='/admin'
               render={() => <Admin 
                                 isLoggedIn={isLoggedIn}
+                                userData={userData}
                             />}
             />
-          }
+          
 
           <Route component={Error} />
         </Switch>

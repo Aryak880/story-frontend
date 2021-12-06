@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
+import { Link } from 'react-router-dom'
 import Loading from '../other/loading/Loading'
 import UserCard from './adminComponents/UserCard'
+import NotLoggedIn from '../other/notLoggedIn/NotLoggedIn'
 import './admin.css'
 
 
-const Admin = () => {
+const Admin = ({userData, isLoggedIn}) => {
 
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(false)
@@ -36,33 +38,50 @@ const Admin = () => {
                 }
                 
                 else{
-                    setUsers(data)
+                    const demo = data.filter(e => e._id !== userData._id)
+                    // console.log(demo)
+                    setUsers(demo)
                     // console.log(data)
                 }
             })
     }
 
+    if(isLoggedIn && userData.isAdmin){
+        return (
+            <div className='signUpContainer profile-container flex-column-center glassmorphism-white'>
+                    
+                <div className="signup flex-column-center glassmorphism-white">
+                        <h2>Admin Pannel</h2>
 
-    return (
-        <div className='signUpContainer profile-container flex-column-center glassmorphism-white'>
-                
-            <div className="signup flex-column-center glassmorphism-white">
-                    <h2>Admin Pannel</h2>
+                        <div>
+                            <button onClick={handleGetUsers} className="btn btn-black">Get all the users</button>
+                        </div>
+                    
+                </div>
 
-                    <div>
-                        <button onClick={handleGetUsers} className="btn btn-black">Get all the users</button>
-                    </div>
-                
+                <div className='glassmorphism-white flex-row-center'>
+                    {
+                        users.map(d => <UserCard data={d} setLoading={setLoading}/>)
+                    }
+                </div>
+                {loading && <Loading />}
             </div>
-
-            <div className='glassmorphism-white flex-row-center'>
-                {
-                    users.map(d => <UserCard data={d} setLoading={setLoading}/>)
-                }
+        )
+    }else if(isLoggedIn && !userData.isAdmin){
+        return(
+            <div className="loginContainer profile-container flex-column-center glassmorphism-white">
+                <h2>You are not Admin!</h2>
+                <Link className='btn green-btn' to='/profile'>Go to Profile</Link>
             </div>
-            {loading && <Loading />}
-        </div>
-    )
+        )
+    }
+    else{
+        return(
+            <div className="loginContainer profile-container flex-column-center glassmorphism-white">
+                <NotLoggedIn />
+            </div>
+        )
+    }
 }
 
 export default Admin
