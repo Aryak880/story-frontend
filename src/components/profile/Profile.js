@@ -57,28 +57,33 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
 
     var com
     if(isLoggedIn)
-        com = <div className="profile LogInSignUp flex-column-center glassmorphism-black">
+        com =
+            <div className="profile LogInSignUp flex-column-center glassmorphism-white">
+                    <div className="pad-2-mar-1 flex-column-center glassmorphism-white">
+                        <h2>Welcome {userData.name}</h2>                    
+                        {userData.isAdmin && <Link className='btn green-btn' to={`/admin`}>Go to Admin pannel</Link>}
+                    </div>
+                <div className='profile LogInSignUp flex-column-center glassmorphism-black'>
+                    <div>
+                            <Link to='/story' className='btn black-btn'>Post Story</Link>
+                            <button onClick={handleSeeStory} className='btn blue-btn'>See all your story &#128083;</button>
+                        </div>
 
-                <div>
-                    <Link to='/story' className='btn black-btn'>Post Story</Link>
-                    <button onClick={handleSeeStory} className='btn blue-btn'>See all your story &#128083;</button>
+                        <hr />
+                        <br />
+                        <label>Name: {userData.name}</label><br />
+                        <label>Age: {userData.age}</label><br />
+                        <label>Email: {userData.email}</label><br />
+                        <label>Facebook: {userData.facebook}</label><br />
+                        <label>Instagram: {userData.instagram}</label><br />
+                        <label>Gender: {userData.gender}</label> <br />
+                        <hr />
+                        <div>
+                            <Link className='btn green-btn' to={`/profile-edit/`}>Edit Profile</Link>
+                            <button onClick={handleLogOut} className='btn danger-btn'>Log out &#10071;</button>
+                        </div>
+                    </div>
                 </div>
-
-                <hr />
-                <br />
-                <label>Name: {userData.name}</label><br />
-                <label>Age: {userData.age}</label><br />
-                <label>Email: {userData.email}</label><br />
-                <label>Facebook: {userData.facebook}</label><br />
-                <label>Instagram: {userData.instagram}</label><br />
-                <label>Gender: {userData.gender}</label> <br />
-                <hr />
-                <div>
-                    <Link className='btn green-btn' to={`/profile-edit/`}>Edit Profile</Link>
-                    {userData.isAdmin && <Link className='btn green-btn' to={`/admin`}>Go to Admin pannel</Link>}
-                    <button onClick={handleLogOut} className='btn danger-btn'>Log out &#10071;</button>
-                </div>
-            </div>
     else {
         com = <NotLoggedIn />
     }

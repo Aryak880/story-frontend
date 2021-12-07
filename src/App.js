@@ -11,6 +11,8 @@ import EditProfile from './components/profile/editProfile/EditProfile'
 import EditPassword from './components/profile/editProfile/EditPassword'
 import Admin from './components/admin/Admin';
 import User from '../src/images/user.png'
+import EditUserProfile from './components/admin/adminComponents/EditUserProfile';
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('aryak-story-app-userData') !== null ? true : false)
@@ -104,6 +106,15 @@ function App() {
             <Route 
               path='/admin'
               render={() => <Admin 
+                                isLoggedIn={isLoggedIn}
+                                userData={userData}
+                            />}
+            />
+
+            <Route
+              path='/edit-user-profle/:_id'
+              exact
+              render={() => <EditUserProfile 
                                 isLoggedIn={isLoggedIn}
                                 userData={userData}
                             />}

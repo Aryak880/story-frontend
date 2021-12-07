@@ -24,15 +24,15 @@ const Login = ({
         })
     }
 
-    const handleShowPassword = () => {
-        // login-password-input
-        var x = document.getElementById("login-password-input");
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
-        }
-    }
+    // const handleShowPassword = () => {
+    //     // login-password-input
+    //     var x = document.getElementById("login-password-input");
+    //     if (x.type === "password") {
+    //         x.type = "text";
+    //     } else {
+    //         x.type = "password";
+    //     }
+    // }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -89,19 +89,19 @@ const Login = ({
                         onChange={handleChange}
                     />                    
                     <input 
-                        type='password' 
+                        type='text' 
                         placeholder="password"
-                        id="login-password-input"
+                        // id="login-password-input"
                         name="password" 
                         value={login.password}
                         onChange={handleChange}
                     />
-                    <div className='show-password-container'>
+                    {/* <div className='show-password-container'>
                         <input 
                             type="checkbox"
                             onClick={handleShowPassword}
                         />Show Password
-                    </div>
+                    </div> */}
                     {
                         !true && <span className='error-message login-user-not-found'>User not found! check email and password</span>
                     }

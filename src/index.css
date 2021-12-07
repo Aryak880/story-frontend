@@ -246,3 +246,15 @@ nav .nav-link {
   /* color: black; */
   background: linear-gradient(90deg, cornflowerblue, rgb(210, 105, 139));
 }
+
+.pad-1-mar-05{
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.pad-2-mar-1{
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
+}

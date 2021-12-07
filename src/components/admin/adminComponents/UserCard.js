@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import { Link } from 'react-router-dom'
 
 const UserCard = ({data, setLoading}) => {
     const {name, email, isAdmin, age, gender, _id} = data
@@ -47,6 +48,7 @@ const UserCard = ({data, setLoading}) => {
             Is Admin: {tempIsAdmin ? <span style={{color: "green"}}>True</span> : "False"} <br />
             <br />
             <button className='btn danger-btn' onClick={() => handleMakeAdmin(_id)}>Toggel Admin</button>
+            <Link to={`/edit-user-profle/`+_id} className='btn blue-btn'>Edit User Profile</Link>
         </div>
     )
 }
