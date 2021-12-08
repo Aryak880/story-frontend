@@ -60,10 +60,10 @@ const Admin = ({userData, isLoggedIn}) => {
             <div className='signUpContainer profile-container flex-column-center glassmorphism-white'>
                     
                 <div className="pad-2-mar-1 flex-column-center glassmorphism-white">
-                        <h2>Admin Pannel</h2>                    
+                        <h2>Admin Panel</h2>                    
                 </div>
 
-                <div className='storyContainer glassmorphism-white flex-row-center'>
+                <div className='storyContainer glassmorphism-white flex-row-center pad-1-mar-0.5'>
                     {
                         users.map(d => <UserCard data={d} setLoading={setLoading}/>)
                     }

@@ -61,7 +61,7 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
             <div className="profile LogInSignUp flex-column-center glassmorphism-white">
                     <div className="pad-2-mar-1 flex-column-center glassmorphism-white">
                         <h2>Welcome {userData.name}</h2>                    
-                        {userData.isAdmin && <Link className='btn green-btn' to={`/admin`}>Go to Admin pannel</Link>}
+                        {userData.isAdmin && <Link className='btn green-btn' to={`/admin`}>Go to Admin panel</Link>}
                     </div>
                 <div className='profile LogInSignUp flex-column-center glassmorphism-black'>
                     <div>
