@@ -9,6 +9,8 @@ const StoryContainer = ({userData}) => {
     const [stories, setStories] = useState([])
     const [loading, setLoading] = useState(true)
     const [isLoded, setIsLoded] = useState(false)
+    const [noStoryMessage, setNoStoryMessage] = useState('')
+    const [query, setQuery] = useState('')
     const [isLoggedIn] = useState(Object.keys(userData).length !== 0)
 
     useEffect(() => {
@@ -19,18 +21,41 @@ const StoryContainer = ({userData}) => {
                 setStories(data)
                 setIsLoded(true)
                 setLoading(false)
+                if(data.length === 0){
+                    setNoStoryMessage("Sorry no one yet posted any story! Why don't you become first one")
+                }
             })
         }
 
         fetchStories()
     }, [])
 
+    const handleSearchSubmit = async (e) => {
+        e.preventDefault()
+
+        await fetch(`https://protected-mesa-93618.herokuapp.com/story-search/${query}`).then(d => d.json()).then(data => {
+                setStories(data)
+                setIsLoded(true)
+                setLoading(false)
+                if(data.length === 0){
+                    setNoStoryMessage(`Sorry we do not have any story with "${query}" string as title, tag or text in story!`)
+                }
+        })
+    }
+
+
     return (
         <div className='story-create-account-container'>
+            <form onSubmit={handleSearchSubmit} className='searchStoryContainer'>
+                <input type='text' value={query} onChange={(e) => setQuery(e.target.value)}/>
+                <button disabled={query.length === 0} className='btn danger-btn'>Search</button>
+            </form>
+
+
             {!isLoggedIn && <CreateAccount />}
             <div className='storyContainer'>
                 {
-                    stories.length===0 && isLoded &&<NoStory />
+                    stories.length===0 && isLoded &&<NoStory text={noStoryMessage} />
                 }
 
                 {

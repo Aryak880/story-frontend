@@ -88,7 +88,7 @@ const EditUserProfile = ({userData, isLoggedIn}) => {
             <div className='signUpContainer profile-container flex-column-center glassmorphism-white'>
                     
                 <div className="pad-2-mar-1 flex-column-center glassmorphism-white">
-                        <h2>Admin Panel: <span style={{color: "red"}}>Update User profile</span></h2>                    
+                        <h2 style={{textAlign:"center"}}>Admin Panel: <span style={{color: "red"}}>Update User profile</span></h2>                    
                 </div>
 
                 

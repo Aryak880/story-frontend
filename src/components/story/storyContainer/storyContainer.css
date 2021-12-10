@@ -14,3 +14,19 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.searchStoryContainer{
+  padding: 1rem;
+  width: 50vw;
+  height: 15vh;
+}
+
+.searchStoryContainer{
+  width: 80vw;
+}
+
+@media only screen and (min-width: 450px) {
+  .searchStoryContainer{
+    width: 50vw;
+  }
+}

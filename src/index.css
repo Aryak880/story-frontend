@@ -136,6 +136,19 @@ nav .nav-link {
 }
 
 /* Button styles */
+.btn:disabled{
+  /* border: 1px solid #999999; */
+  background-color: #cccccc;
+  color: #666666;
+}
+
+button:disabled,
+button[disabled]{
+  /* border: 1px solid #999999; */
+  background-color: #cccccc;
+  color: #666666;
+}
+
 .btn{
   padding: 0.5rem;
   font-size: 1.6rem;
