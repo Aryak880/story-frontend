@@ -30,6 +30,7 @@ const EditProfile = ({userData, setUserProfile, setIsLoggedIn}) => {
     }
 
     const handleDeleteProfile = async () => {
+        setLoading(true)
         if(window.confirm("Do you really want to delete your account!")){
             fetch('https://protected-mesa-93618.herokuapp.com/user/me', {
             method: "DELETE",
@@ -43,6 +44,8 @@ const EditProfile = ({userData, setUserProfile, setIsLoggedIn}) => {
                 localStorage.removeItem("aryak-story-app-userToken")
                 localStorage.removeItem('aryak-story-app-userData')
                 setIsLoggedIn(false)
+                setLoading(false)
+                history.push('')
             })
         }
     }
