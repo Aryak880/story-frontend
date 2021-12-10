@@ -32,6 +32,8 @@ const StoryContainer = ({userData}) => {
 
     const handleSearchSubmit = async (e) => {
         e.preventDefault()
+        
+        setLoading(true)
 
         await fetch(`https://protected-mesa-93618.herokuapp.com/story-search/${query}`).then(d => d.json()).then(data => {
                 setStories(data)
@@ -46,13 +48,13 @@ const StoryContainer = ({userData}) => {
 
     return (
         <div className='story-create-account-container'>
-            <form onSubmit={handleSearchSubmit} className='searchStoryContainer'>
-                <input type='text' value={query} onChange={(e) => setQuery(e.target.value)}/>
-                <button disabled={query.length === 0} className='btn danger-btn'>Search</button>
-            </form>
-
-
             {!isLoggedIn && <CreateAccount />}
+            
+            <form onSubmit={handleSearchSubmit} className='searchStoryContainer'>
+                <input placeholder='Search story' type='text' value={query} onChange={(e) => setQuery(e.target.value)}/>
+                <button disabled={query.length === 0} className='btn danger-btn'>Search</button>
+            </form>            
+
             <div className='storyContainer'>
                 {
                     stories.length===0 && isLoded &&<NoStory text={noStoryMessage} />
