@@ -98,7 +98,7 @@ const StoryContainer = ({userData}) => {
                                 }
                             }}
                     disabled={!(pageNo < (Math.floor(totalStories/10)+1))}
-                >&#9193;</button>
+                >{!(pageNo < (Math.floor(totalStories/10)+1)) ? "No More Story" : <span>&#9193;</span> }</button>
             </div>
         </div>
     )
