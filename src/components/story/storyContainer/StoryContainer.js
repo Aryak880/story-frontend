@@ -12,12 +12,14 @@ const StoryContainer = ({userData}) => {
     const [noStoryMessage, setNoStoryMessage] = useState('')
     const [query, setQuery] = useState('')
     const [isLoggedIn] = useState(Object.keys(userData).length !== 0)
+    const [totalStories, setTotalStories] = useState(0)
+    const [pageNo, setPageNo] = useState(1)
 
     useEffect(() => {
         setLoading(true)
 
         const fetchStories = async () => {
-            await fetch('https://protected-mesa-93618.herokuapp.com/stories').then(d => d.json()).then(data => {
+            await fetch('https://protected-mesa-93618.herokuapp.com/stories/'+pageNo).then(d => d.json()).then(data => {
                 setStories(data)
                 setIsLoded(true)
                 setLoading(false)
@@ -27,8 +29,19 @@ const StoryContainer = ({userData}) => {
             })
         }
 
+        const fetchStoriesNumber = async () => {
+            await fetch('https://protected-mesa-93618.herokuapp.com/stories/numbers').then(d => d.json()).then(data => {
+                setTotalStories(data.numberOfStories)
+                setIsLoded(true)
+                setLoading(false)
+            })
+        }
+
         fetchStories()
-    }, [])
+        if(pageNo === 1){
+            fetchStoriesNumber()
+        }
+    }, [pageNo])
 
     const handleSearchSubmit = async (e) => {
         e.preventDefault()
@@ -65,6 +78,27 @@ const StoryContainer = ({userData}) => {
                 }
 
                 {loading && <Loading />}
+            </div>
+            <div>
+                <button 
+                    className='btn danger-btn' 
+                    onClick={() => {
+                                if(pageNo > 0){
+                                    setPageNo(pageNo-1)
+                                }
+                            }}
+                    disabled={(pageNo <= 1)}
+                >&#9194;</button>
+
+                <button 
+                    className='btn danger-btn' 
+                    onClick={() => {
+                                if(pageNo < (Math.floor(totalStories/10)+1)){
+                                    setPageNo(pageNo+1)
+                                }
+                            }}
+                    disabled={!(pageNo < (Math.floor(totalStories/10)+1))}
+                >&#9193;</button>
             </div>
         </div>
     )
