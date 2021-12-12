@@ -20,7 +20,7 @@ const StoryContainer = ({userData}) => {
 
         const fetchStories = async () => {
             await fetch('https://protected-mesa-93618.herokuapp.com/stories/'+pageNo).then(d => d.json()).then(data => {
-                setStories(data)
+                setStories(preStories => [...preStories, ...data])
                 setIsLoded(true)
                 setLoading(false)
                 if(data.length === 0){
@@ -80,7 +80,7 @@ const StoryContainer = ({userData}) => {
                 {loading && <Loading />}
             </div>
             <div>
-                <button 
+                {/* <button 
                     className='btn danger-btn' 
                     onClick={() => {
                                 if(pageNo > 0){
@@ -88,17 +88,17 @@ const StoryContainer = ({userData}) => {
                                 }
                             }}
                     disabled={(pageNo <= 1)}
-                >&#9194;</button>
+                >&#9194;</button> */}
 
                 <button 
-                    className='btn danger-btn' 
+                    className='btn black-btn' 
                     onClick={() => {
                                 if(pageNo < (Math.floor(totalStories/10)+1)){
                                     setPageNo(pageNo+1)
                                 }
                             }}
-                    disabled={!(pageNo < (Math.floor(totalStories/10)+1))}
-                >{!(pageNo < (Math.floor(totalStories/10)+1)) ? "No More Story" : <span>&#9193;</span> }</button>
+                    disabled={totalStories === stories.length}
+                >{(totalStories === stories.length) ? "No More Story" : <span>read more story</span> }</button>
             </div>
         </div>
     )
