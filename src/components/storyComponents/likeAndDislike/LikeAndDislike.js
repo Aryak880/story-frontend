@@ -3,6 +3,7 @@ import './likeAndDislike.css'
 import Like from '../../../images/like.png'
 import Dislike from '../../../images/dislike.png'
 import Loading from '../../other/loading/Loading'
+import SURL from '../../../const'
 
 
 const LikeAndDislike = ({stories, userData}) => {
@@ -25,7 +26,7 @@ const LikeAndDislike = ({stories, userData}) => {
             var temp = likes
             temp.push(userData._id)
 
-            fetch('https://protected-mesa-93618.herokuapp.com/me/story/'+id, {
+            fetch(SURL+'/me/story/'+id, {
             method: "PATCH",
             body: JSON.stringify({ likes: temp }),
             headers: {
@@ -58,7 +59,7 @@ const LikeAndDislike = ({stories, userData}) => {
             var temp = disLikes
             temp.push(userData._id)
             
-            fetch('https://protected-mesa-93618.herokuapp.com/me/story/'+id, {
+            fetch(SURL+'/me/story/'+id, {
             method: "PATCH",
             body: JSON.stringify({ disLikes:temp }),
             headers: {

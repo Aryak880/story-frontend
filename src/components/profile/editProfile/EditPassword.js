@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import Loading from '../../other/loading/Loading'
 import Error from '../../other/error/Error'
+import SURL from '../../../const'
 
 
 const EditPassword = () => {
@@ -36,7 +37,7 @@ const EditPassword = () => {
 
         setLoading(true)
 
-        fetch('https://protected-mesa-93618.herokuapp.com/user/me/password', {
+        fetch(SURL+'/user/me/password', {
             method: "PATCH",
             body: JSON.stringify({
                 password: password,

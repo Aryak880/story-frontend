@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import Loading from '../../other/loading/Loading'
 import Error from '../../other/error/Error'
+import SURL from '../../../const'
 
 import './signup.css'
 
@@ -43,7 +44,7 @@ const Signup = ({ setUserProfile, setIsLoggedIn }) => {
         e.preventDefault()
         setLoading(true)
 
-        fetch('https://protected-mesa-93618.herokuapp.com/user/signup', {
+        fetch(SURL+'/user/signup', {
             method: 'POST',
             body: JSON.stringify({ ...user }),
             headers: {

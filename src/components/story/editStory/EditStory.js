@@ -4,6 +4,7 @@ import Loading from '../../other/loading/Loading'
 import NotLoggedIn from '../../other/notLoggedIn/NotLoggedIn'
 import Error from '../../other/error/Error'
 import './editStory.css'
+import SURL from '../../../const'
 
 const EditStory = ({userData}) => {
     const history = useHistory()
@@ -29,7 +30,7 @@ const EditStory = ({userData}) => {
         const storyId = URL.substring(URL.search('edit-story')+11, URL.length)
 
         const fetchStories = async () => {
-            await fetch(`https://protected-mesa-93618.herokuapp.com/read-story/${storyId}`).then(d => d.json()).then(data => {
+            await fetch(SURL+`/read-story/${storyId}`).then(d => d.json()).then(data => {
                 setStory({
                     ...data
                 })
@@ -46,7 +47,7 @@ const EditStory = ({userData}) => {
             setLoading(true)
             setError(false)
 
-            fetch('https://protected-mesa-93618.herokuapp.com/me/story/'+_id, {
+            fetch(SURL+'/me/story/'+_id, {
             method: "PATCH",
             body: JSON.stringify({ title: story.title, story: story.story, category: story.category }),
             headers: {

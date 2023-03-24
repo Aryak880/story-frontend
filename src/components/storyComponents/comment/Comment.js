@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import './comment.css'
+import SURL from '../../../const'
 
 const CommentCard = ({name, comment}) => {
     return(
@@ -25,7 +26,7 @@ const Comment = ({ comments, userData, storyId }) => {
                 comment: inputComment
             })
 
-            fetch('https://protected-mesa-93618.herokuapp.com/me/story/'+storyId, {
+            fetch(SURL+'/me/story/'+storyId, {
             method: "PATCH",
             body: JSON.stringify({ comments }),
             headers: {

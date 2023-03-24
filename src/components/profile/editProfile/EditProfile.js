@@ -3,6 +3,7 @@ import {useHistory, Link} from 'react-router-dom'
 import Loading from '../../other/loading/Loading'
 import Error from '../../other/error/Error'
 import NotLoggedIn from '../../other/notLoggedIn/NotLoggedIn'
+import SURL from '../../../const'
 
 const EditProfile = ({userData, setUserProfile, setIsLoggedIn}) => {
     const history = useHistory()
@@ -32,7 +33,7 @@ const EditProfile = ({userData, setUserProfile, setIsLoggedIn}) => {
     const handleDeleteProfile = async () => {
         setLoading(true)
         if(window.confirm("Do you really want to delete your account!")){
-            fetch('https://protected-mesa-93618.herokuapp.com/user/me', {
+            fetch(SURL+'/user/me', {
             method: "DELETE",
             headers: new Headers({
                 'Authorization': 'Bearer ' + localStorage.getItem("aryak-story-app-userToken"), 
@@ -60,7 +61,7 @@ const EditProfile = ({userData, setUserProfile, setIsLoggedIn}) => {
         setLoading(true)
         setError(false)
 
-            fetch('https://protected-mesa-93618.herokuapp.com/user/me', {
+            fetch(SURL+'/user/me', {
             method: "PATCH",
             body: JSON.stringify({ 
                 name: user.name,

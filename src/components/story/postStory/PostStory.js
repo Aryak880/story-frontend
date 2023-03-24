@@ -3,6 +3,7 @@ import Loading from '../../other/loading/Loading'
 import Error from '../../other/error/Error'
 import './postStory.css'
 import NotLoggedIn from '../../other/notLoggedIn/NotLoggedIn'
+import SURL from '../../../const'
 
 const PostStory = ({userData}) => {
 
@@ -23,7 +24,7 @@ const PostStory = ({userData}) => {
             e.preventDefault()
             setLoading(true)
             
-            fetch('https://protected-mesa-93618.herokuapp.com/me/story', {
+            fetch(SURL+'/me/story', {
             method: "POST",
             body: JSON.stringify({...story}),
             headers: {

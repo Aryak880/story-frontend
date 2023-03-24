@@ -4,6 +4,7 @@ import Loading from '../../other/loading/Loading'
 import './singleStory.css'
 import LikeAndDislike from '../../storyComponents/likeAndDislike/LikeAndDislike'
 import Comment from '../../storyComponents/comment/Comment'
+import SURL from '../../../const'
 
 
 const SingleStory = ({userData}) => {
@@ -28,7 +29,7 @@ const SingleStory = ({userData}) => {
             const storyId = URL.substring(URL.search('read-story')+11, URL.length)
             
             const fetchStories = async () => {
-                await fetch(`https://protected-mesa-93618.herokuapp.com/read-story/${storyId}`).then(d => d.json()).then(data => {
+                await fetch(SURL+`/read-story/${storyId}`).then(d => d.json()).then(data => {
                     if(!data.error){
                         setStories(data)
                         fetchUser(data.owner)
@@ -40,7 +41,7 @@ const SingleStory = ({userData}) => {
             }
 
             const fetchUser = async (id) => {
-                await fetch(`https://protected-mesa-93618.herokuapp.com/user/${id}`).then(d => d.json()).then(data => {
+                await fetch(SURL+`/user/${id}`).then(d => d.json()).then(data => {
                     setStoryOwner(data)
                     setLoading(false)
                 })

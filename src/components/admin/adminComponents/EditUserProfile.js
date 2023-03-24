@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 import Loading from '../../other/loading/Loading'
 import Error from '../../other/error/Error'
 import NotLoggedIn from '../../other/notLoggedIn/NotLoggedIn'
+import SURL from '../../../const'
 
 const EditUserProfile = ({userData, isLoggedIn}) => {
     const history = useHistory()
@@ -25,7 +26,7 @@ const EditUserProfile = ({userData, isLoggedIn}) => {
     useEffect(() => {
         setLoading(true)
         const fetchUser = async () => {
-            await fetch(`https://protected-mesa-93618.herokuapp.com/user/${id}`).then(d => d.json()).then(data => {
+            await fetch(`${SURL}/user/${id}`).then(d => d.json()).then(data => {
                 setLoading(false)
                 setUser(data)
             })
@@ -45,7 +46,7 @@ const EditUserProfile = ({userData, isLoggedIn}) => {
         e.preventDefault()
         setLoading(true)
 
-        fetch(`https://protected-mesa-93618.herokuapp.com/update/user/${id}`, {
+        fetch(`${SURL}/update/user/${id}`, {
             method: 'PATCH',
             body: JSON.stringify({ 
                 name: user.name,

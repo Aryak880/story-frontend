@@ -3,7 +3,7 @@ import React, {useState, useRef} from 'react'
 import NotLoggedIn from '../other/notLoggedIn/NotLoggedIn'
 import UserStoryCard from '../story/userStoryCard/UserStoryCard'
 import Loading from '../other/loading/Loading'
-// import Admin from '../admin/Admin'
+import SURL from '../../../src/const'
 
 import './profile.css'
 
@@ -15,7 +15,7 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
 
     const handleLogOut = async () => {
         if(window.confirm("Are you sure to LOG OUT!")){
-            fetch('https://protected-mesa-93618.herokuapp.com/user/logoutAll', {
+            fetch(SURL+'/user/logoutAll', {
                 method: "POST",
                 body: JSON.stringify({token: localStorage.getItem("aryak-story-app-userToken")}),
                 headers: {
@@ -34,8 +34,7 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
 
     const handleSeeStory = async () => {
         setLoading(true)
-
-        fetch('https://protected-mesa-93618.herokuapp.com/me/stories', {
+        fetch(SURL+'/me/stories', {
             method: "GET",
             headers: new Headers({
                 'Authorization': 'Bearer ' + localStorage.getItem("aryak-story-app-userToken"), 
@@ -53,7 +52,23 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
 
     }
 
-
+    const handleDeleteProfile = async () => {
+        if(window.confirm("Do you really want to delete your account!")){
+            fetch(SURL+'/user/me', {
+            method: "DELETE",
+            headers: new Headers({
+                'Authorization': 'Bearer '+sessionStorage.getItem("aryak-story-app-userToken"), 
+                "Content-type": "application/json; charset=UTF-8"
+              }),
+            }).then(response => {
+                return response.json()
+            }).then(data => {
+                sessionStorage.removeItem("aryak-story-app-userToken")
+                sessionStorage.removeItem('aryak-story-app-userData')
+                setIsLoggedIn(false)
+            })
+        }
+    }
 
     var com
     if(isLoggedIn)

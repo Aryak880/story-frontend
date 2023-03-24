@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Loading from '../other/loading/Loading'
 import UserCard from './adminComponents/UserCard'
 import NotLoggedIn from '../other/notLoggedIn/NotLoggedIn'
+import SURL from '../../const'
 import './admin.css'
 
 
@@ -16,7 +17,7 @@ const Admin = ({userData, isLoggedIn}) => {
         
         const fetchUsers = async ()  => {
 
-            await fetch('https://protected-mesa-93618.herokuapp.com/users', {
+            await fetch(`${SURL}/users`, {
                     method: "GET",
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('aryak-story-app-userToken')}`,

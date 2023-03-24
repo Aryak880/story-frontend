@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import './userStoryCard.css'
+import SURL from '../../../const'
 // import Loading from '../../other/loading/Loading'
 
 
@@ -10,7 +11,7 @@ const UserStoryCard = ({data, handleSeeStory}) => {
 
     const handleStoryDelete = async (id) => {
         if(window.confirm("Do you really want to delete story?")){
-            fetch('https://protected-mesa-93618.herokuapp.com/me/story/'+id, {
+            fetch(SURL+'/me/story/'+id, {
                 method: "DELETE",
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('aryak-story-app-userToken')}`,

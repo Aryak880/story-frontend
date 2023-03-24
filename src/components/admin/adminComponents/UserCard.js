@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
+import SURL from '../../../const'
 
 const UserCard = ({data, setLoading}) => {
     const {name, email, isAdmin, age, gender, _id} = data
@@ -8,7 +9,7 @@ const UserCard = ({data, setLoading}) => {
     const handleMakeAdmin = (id) => {
         setLoading(true)
 
-        fetch(`https://protected-mesa-93618.herokuapp.com/users/${id}`, {
+        fetch(`${SURL}/users/${id}`, {
             method: "PATCH",
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('aryak-story-app-userToken')}`,

@@ -3,6 +3,7 @@ import './storyContainer.css'
 import Loading from '../../other/loading/Loading'
 import NoStory from '../noStory/NoStory'
 import StoryCard from '../storyCard/StoryCard'
+import SURL from '../../../const'
 import CreateAccount from '../../other/createAccount/CreateAccount'
 
 const StoryContainer = ({userData}) => {
@@ -19,19 +20,8 @@ const StoryContainer = ({userData}) => {
         setLoading(true)
 
         const fetchStories = async () => {
-            await fetch('https://protected-mesa-93618.herokuapp.com/stories/'+pageNo).then(d => d.json()).then(data => {
-                setStories(preStories => [...preStories, ...data])
-                setIsLoded(true)
-                setLoading(false)
-                if(data.length === 0){
-                    setNoStoryMessage("Sorry no one yet posted any story! Why don't you become first one")
-                }
-            })
-        }
-
-        const fetchStoriesNumber = async () => {
-            await fetch('https://protected-mesa-93618.herokuapp.com/stories/numbers').then(d => d.json()).then(data => {
-                setTotalStories(data.numberOfStories)
+            await fetch(SURL+'/stories').then(d => d.json()).then(data => {
+                setStories(data)
                 setIsLoded(true)
                 setLoading(false)
             })
@@ -39,7 +29,7 @@ const StoryContainer = ({userData}) => {
 
         fetchStories()
         if(pageNo === 1){
-            fetchStoriesNumber()
+            fetchStories()
         }
     }, [pageNo])
 
@@ -48,7 +38,7 @@ const StoryContainer = ({userData}) => {
         
         setLoading(true)
 
-        await fetch(`https://protected-mesa-93618.herokuapp.com/story-search/${query}`).then(d => d.json()).then(data => {
+        await fetch(`${SURL}/story-search/${query}`).then(d => d.json()).then(data => {
                 setStories(data)
                 setIsLoded(true)
                 setLoading(false)

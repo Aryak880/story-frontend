@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 import Loading from '../../other/loading/Loading'
 import Error from '../../other/error/Error'
 import './login.css'
+import SURL from '../../../const'
 
 const Login = ({
     setIsLoggedIn, 
@@ -38,7 +39,7 @@ const Login = ({
         e.preventDefault()
         setLoading(true)
 
-        fetch('https://protected-mesa-93618.herokuapp.com/user/login', {
+        fetch(SURL+'/user/login', {
             method: 'POST',
             body: JSON.stringify({...login}),
             headers: {
