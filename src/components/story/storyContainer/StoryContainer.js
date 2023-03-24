@@ -13,7 +13,7 @@ const StoryContainer = ({userData}) => {
     const [noStoryMessage, setNoStoryMessage] = useState('')
     const [query, setQuery] = useState('')
     const [isLoggedIn] = useState(Object.keys(userData).length !== 0)
-    // const [totalStories, setTotalStories] = useState(0)
+    const [totalStories] = useState(0)
     const [pageNo, setPageNo] = useState(1)
 
     useEffect(() => {
