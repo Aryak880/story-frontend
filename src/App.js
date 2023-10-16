@@ -12,12 +12,17 @@ import EditPassword from './components/profile/editProfile/EditPassword'
 import Admin from './components/admin/Admin';
 import User from '../src/images/user.png'
 import EditUserProfile from './components/admin/adminComponents/EditUserProfile';
+import PrivacyPolicy from './components/other/privacyPolicy/PrivacyPolicy';
+import TermAndCondition from './components/other/termAndCondition/TermAndCondition';
+
+
 
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('aryak-story-app-userData') !== null ? true : false)
   const [userData, setUserData] = useState(localStorage.getItem('aryak-story-app-userData') !== null ? JSON.parse(localStorage.getItem('aryak-story-app-userData')) : {})
 
+  // This function will clear local storage on loding the windows
   // window.onunload = function () {
   //   localStorage.clear();
   // }
@@ -33,8 +38,8 @@ function App() {
             <div className='login-signup'>
                 {
                   isLoggedIn ? <Link to="/profile" className='default-link-color'>Profile</Link>  : <>
-                    <Link to='/profile/login' className='default-link-color'>Log in</Link> &nbsp;
-                    <Link to='/profile/signup' className='default-link-color'>Sign Up</Link>
+                    <Link to='/profile/login' className='default-link-color'>Log-in</Link> &nbsp; | &nbsp;
+                    <Link to='/profile/signup' className='default-link-color'>Sign-up</Link>
                   </>
                 }
             </div>
@@ -118,6 +123,15 @@ function App() {
                                 isLoggedIn={isLoggedIn}
                                 userData={userData}
                             />}
+            />
+
+            <Route
+              path='/privacy-policy'
+              render={() => <PrivacyPolicy />}
+            />
+            <Route
+              path='/term-and-condition'
+              render={() => <TermAndCondition />}
             />
           
 
