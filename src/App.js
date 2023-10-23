@@ -14,6 +14,8 @@ import User from '../src/images/user.png'
 import EditUserProfile from './components/admin/adminComponents/EditUserProfile';
 import PrivacyPolicy from './components/other/privacyPolicy/PrivacyPolicy';
 import TermAndCondition from './components/other/termAndCondition/TermAndCondition';
+import ContactUs from './components/other/contactUsForm/ContactUs';
+
 
 
 
@@ -129,9 +131,15 @@ function App() {
               path='/privacy-policy'
               render={() => <PrivacyPolicy />}
             />
+
             <Route
               path='/term-and-condition'
               render={() => <TermAndCondition />}
+            />
+
+            <Route
+              path='/contact-us'
+              render={() => <ContactUs />}
             />
           
 
