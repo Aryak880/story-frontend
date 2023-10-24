@@ -2,6 +2,8 @@ import React,{useRef, useState } from 'react'
 import './contact.css'
 import emailjs from 'emailjs-com'
 import Error from '../error/Error'
+import Loading from '../loading/Loading'
+
 
 const ContactUs = () => {
     const form = useRef();
@@ -9,20 +11,26 @@ const ContactUs = () => {
         message: '',
         result: ''
     })
+    const [loading, setLoading] = useState(false)
 
-    console.log(process.env.EmaiJsPublicKey)
 
     const sendEmail = (e) => {
         e.preventDefault();
+
+        // This is for accessing the form tag to clear its input after sending message
+        var frm = document.getElementsByName('contact')[0];
+
         
+        setLoading(true)
         // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_PUBLIC_KEY')
         emailjs.sendForm(process.env.REACT_APP_EmaiJsServiceID, process.env.REACT_APP_EmaiJsTemplateID, form.current, process.env.REACT_APP_EmaiJsPublicKey)
           .then((result) => {
-              console.log(result);
+            setLoading(false)
+            console.log(result.text)
               setError({result: 'success-div', message: 'Your message is sent! 😃, Soon you will recive replay'})
-            
+              frm.reset()            
           }, (error) => {
-              console.log(error.text);
+            setLoading(false)
               setError({result: 'error-div', message: `From is NOT Submited! 🙁 \nError message: ${error.text}`})
           });
       };
@@ -90,6 +98,8 @@ const ContactUs = () => {
 
                     <input type='submit' className='submit-btn' />
                 </form>
+
+                {loading && <Loading />}
     </div>
   )
 }
