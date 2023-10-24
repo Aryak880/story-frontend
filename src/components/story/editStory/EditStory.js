@@ -79,7 +79,7 @@ const EditStory = ({userData}) => {
                     </div>
                     :
                     <div>
-                        {error && <Error text="Story not Update, Please try again!"/>}
+                        {error && <Error text="Story not Update, Please try again!" clName={'error-div'}/>}
                         <form onSubmit={handleUpdateStorySubmit}>
                             <div className='storyForm'>
                                 <h1>Edit Story's details</h1>

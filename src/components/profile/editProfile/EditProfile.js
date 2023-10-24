@@ -117,7 +117,7 @@ const EditProfile = ({userData, setUserProfile, setIsLoggedIn}) => {
                     :
 
                     <div className='signUpContainer profile-container flex-column-center glassmorphism-white'>
-                        {error && <Error text="Profile not update, please try again!"/>}
+                        {error && <Error text="Profile not update, please try again!" clName={'error-div'}/>}
                     <div className="signup flex-column-center glassmorphism-white">
                             <h2>Update Profile</h2>
                             <div>

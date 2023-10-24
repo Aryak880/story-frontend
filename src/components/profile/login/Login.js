@@ -113,7 +113,7 @@ const Login = ({
                 <p>Do not have account? <Link to='/profile/signup'>Create here</Link></p>
             </div>
             {loading && <Loading />}
-            {!userFound && <Error text="User not found! Or you have entred wrong password or email"/>}
+            {!userFound && <Error text="User not found! Or you have entred wrong password or email" clName={'error-div'}/>}
         </div>
     )
 }

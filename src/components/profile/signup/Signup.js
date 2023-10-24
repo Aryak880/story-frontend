@@ -85,7 +85,7 @@ const Signup = ({ setUserProfile, setIsLoggedIn }) => {
     return (
         <div className='signUpContainer profile-container flex-column-center glassmorphism-white'>
             <div className="signup flex-column-center glassmorphism-white">
-                {!isSignedUp && <Error text="Unable to create user! May be email alredy exist" />}
+                {!isSignedUp && <Error text="Unable to create user! May be email alredy exist" clName={'error-div'}/>}
 
                 <h2>Sign Up</h2>
                 <form onSubmit={handleSubmit}>

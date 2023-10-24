@@ -2,12 +2,15 @@ import React from 'react'
 import './error.css'
 
 
-const Error = (props) => {
+const Error = ({text, clName}) => {
 
     return (
-        <div className='error-div'>
-            {props.text}
+        <div className='error-container'>
+            <div className={`error-message-div ${clName === 'success-div' ? 'success-div' : 'error-div'}`}>
+                {text}
+            </div>
         </div>
+
     )
 }
 

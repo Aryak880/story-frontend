@@ -94,7 +94,7 @@ const EditUserProfile = ({userData, isLoggedIn}) => {
 
                 
                     <div className="signup flex-column-center glassmorphism-white">
-                        {notEdited && <Error text="Unable to edit the user!" />}
+                        {notEdited && <Error text="Unable to edit the user!" clName={'error-div'}/>}
 
                         <h3>{user.name}'s profile</h3>
                         <form onSubmit={handleSubmit}>
