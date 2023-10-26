@@ -16,7 +16,10 @@ const PostStory = ({userData}) => {
         comments: []
     })
 
-    const [isStoryPosted, setIsStoryPosted] = useState('')
+    const [isStoryPosted, setIsStoryPosted] = useState({
+        message: '',
+        class: '',
+    })
     const [loading, setLoading] = useState(false)
 
 
@@ -34,14 +37,24 @@ const PostStory = ({userData}) => {
             })
             .then(response => {
                 setLoading(false)
-                if(response.status === 201){
-                    setIsStoryPosted("Your Story is posted go and check in read story tab")
+                return {
+                    data: response.json(),
+                    status: response.status
+                };
+            }).then(data => {
+                if(data.status === 201){
+                    setIsStoryPosted({
+                        message: "Your Story is posted go and check in read story tab 😊",
+                        class: 'success-div'
+                    })
                 }else{
-                    setIsStoryPosted("Sorry your story is not posted!")
+                    setIsStoryPosted({
+                        message: "Your Story is not posted 😑. \n\nMake sure your story should be unique!!",
+                        class: 'error-div'
+                    })
                 }
-
-                return response.json()
             })
+
             setstory({
                 title: '',
                 story: '',
@@ -96,7 +109,7 @@ const PostStory = ({userData}) => {
                     </div>
 
                     <button type="submit" className='submit-btn'>Submit</button>
-                    {isStoryPosted.length > 0 && <Error text={isStoryPosted} clName={'error-div'}/>}
+                    {isStoryPosted.message.length > 0 && <Error text={isStoryPosted.message} clName={isStoryPosted.class}/>}
                 </form>
                 }
 

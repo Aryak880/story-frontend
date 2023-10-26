@@ -90,7 +90,7 @@ const Signup = ({ setUserProfile, setIsLoggedIn }) => {
                 <h2>Sign Up</h2>
                 <form onSubmit={handleSubmit}>
                     <input
-                        type="text"
+                        type="name"
                         placeholder='Full name'
                         name="name"
                         required
@@ -119,7 +119,7 @@ const Signup = ({ setUserProfile, setIsLoggedIn }) => {
                             <option value="other">Other</option>
                         </select>
                         <input
-                            type="number" min={0} max={150}
+                            type="number" min={5} max={150}
                             placeholder='Age'
                             name="age"
                             required

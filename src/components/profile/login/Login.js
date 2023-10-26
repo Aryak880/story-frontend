@@ -83,14 +83,14 @@ const Login = ({
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit}>
                     <input 
-                        type='text' 
+                        type='email' 
                         placeholder="email" 
                         name="email" 
                         value={login.email}
                         onChange={handleChange}
                     />                    
                     <input 
-                        type='text' 
+                        type='password' 
                         placeholder="password"
                         // id="login-password-input"
                         name="password" 
