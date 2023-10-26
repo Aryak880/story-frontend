@@ -27,7 +27,7 @@ const ContactUs = () => {
           .then((result) => {
             setLoading(false)
             console.log(result.text)
-              setError({result: 'success-div', message: 'Your message is sent! 😃, Soon you will recive replay'})
+              setError({result: 'success-div', message: 'Your message is sent! 😃, Soon you will recive reply'})
               frm.reset()            
           }, (error) => {
             setLoading(false)
