@@ -25,16 +25,6 @@ const Login = ({
         })
     }
 
-    // const handleShowPassword = () => {
-    //     // login-password-input
-    //     var x = document.getElementById("login-password-input");
-    //     if (x.type === "password") {
-    //         x.type = "text";
-    //     } else {
-    //         x.type = "password";
-    //     }
-    // }
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         setLoading(true)

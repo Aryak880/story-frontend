@@ -9,9 +9,12 @@ import './profile.css'
 
 const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
     const myRef = useRef(null)
-    const [stories, setStories] = useState([])
+    const [stories, setStories] = useState({
+        data: [],
+        fetched: false
+    })
     const [loading, setLoading] = useState(false)
-    
+
 
     const handleLogOut = async () => {
         if(window.confirm("Are you sure to LOG OUT!")){
@@ -43,32 +46,16 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
         }).then(response => {
             return response.json()
         }).then(data => {
-            setStories(data)
-            setLoading(false, localStorage.getItem("aryak-story-app-userToken"))            
+            setStories({
+                data: data,
+                fetched: true
+            })
+            setLoading(false)            
 
             const executeScroll = () => myRef.current.scrollIntoView()
             executeScroll()            
         })
-
     }
-
-    // const handleDeleteProfile = async () => {
-    //     if(window.confirm("Do you really want to delete your account!")){
-    //         fetch(SURL+'/user/me', {
-    //         method: "DELETE",
-    //         headers: new Headers({
-    //             'Authorization': 'Bearer '+sessionStorage.getItem("aryak-story-app-userToken"), 
-    //             "Content-type": "application/json; charset=UTF-8"
-    //           }),
-    //         }).then(response => {
-    //             return response.json()
-    //         }).then(data => {
-    //             sessionStorage.removeItem("aryak-story-app-userToken")
-    //             sessionStorage.removeItem('aryak-story-app-userData')
-    //             setIsLoggedIn(false)
-    //         })
-    //     }
-    // }
 
     var com
     if(isLoggedIn)
@@ -103,16 +90,21 @@ const Profile = ({userData, isLoggedIn, setIsLoggedIn}) => {
         com = <NotLoggedIn />
     }
 
+
+
     return (
         <div className='loginContainer profile-container flex-column-center glassmorphism-white'>
             {
                 com
             }
             
+            {stories.fetched && <h4 className='glassmorphism-white'>You have posted {stories.data.length} Stories 😍</h4>}
+
             <div className='userStoryContainer' ref={myRef}>
+                
 
                 {
-                    isLoggedIn && stories.map(x => <UserStoryCard key={x._id} data={x} handleSeeStory={handleSeeStory}/>)
+                    isLoggedIn && stories.data.map(x => <UserStoryCard key={x._id} data={x} handleSeeStory={handleSeeStory}/>)
                 }
 
                 {loading && <Loading />}

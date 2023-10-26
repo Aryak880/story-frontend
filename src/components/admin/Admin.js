@@ -66,7 +66,7 @@ const Admin = ({userData, isLoggedIn}) => {
 
                 <div className='storyContainer glassmorphism-white flex-row-center pad-1-mar-0.5'>
                     {
-                        users.map(d => <UserCard data={d} setLoading={setLoading}/>)
+                        users.map(d => <UserCard data={d} setLoading={setLoading} key={d.email}/>)
                     }
                 </div>
                 {loading && <Loading />}
