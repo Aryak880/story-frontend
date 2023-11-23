@@ -94,6 +94,9 @@ const ContactUs = () => {
                                 // minLength={500}
                             ></textarea>
                         </label><br />
+
+                        <div class="g-recaptcha" data-sitekey={process.env.GOOGLE_CAPTCHA_SECRET_KEY}></div>
+                        <br />
                     </div>
 
                     <input type='submit' className='submit-btn' />
