@@ -5,6 +5,7 @@ import NoStory from '../noStory/NoStory'
 import StoryCard from '../storyCard/StoryCard'
 import SURL from '../../../const'
 import CreateAccount from '../../other/createAccount/CreateAccount'
+import FirstLoadingBackend from '../../other/createAccount/FirstLoadingBackend'
 
 const StoryContainer = ({userData}) => {
     const [stories, setStories] = useState([])
@@ -15,6 +16,7 @@ const StoryContainer = ({userData}) => {
     const [isLoggedIn] = useState(Object.keys(userData).length !== 0)
     const [totalStories] = useState(0)
     const [pageNo, setPageNo] = useState(1)
+    const [firstLoading, setFirstLoading] = useState(true)
 
     useEffect(() => {
         setLoading(true)
@@ -25,6 +27,8 @@ const StoryContainer = ({userData}) => {
                 setIsLoded(true)
                 setLoading(false)
             })
+
+            setFirstLoading(false);
         }
 
         fetchStories()
@@ -52,6 +56,7 @@ const StoryContainer = ({userData}) => {
     return (
         <div className='story-create-account-container'>
             {!isLoggedIn && <CreateAccount />}
+            {firstLoading && <FirstLoadingBackend />}
             
             <form onSubmit={handleSearchSubmit} className='searchStoryContainer'>
                 <input placeholder='Search story' type='text' value={query} onChange={(e) => setQuery(e.target.value)}/>
